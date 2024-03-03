@@ -188,7 +188,7 @@ a:focus {
     }
     
     .navbar.nav-sticky .navbar-brand {
-        color: #202bc7f2;
+        color: #000000f2;
     }
 
     .navbar-light .navbar-nav .nav-link,
@@ -222,7 +222,7 @@ a:focus {
     }
     
     .navbar .navbar-brand {
-        color: #6416a8;
+        color: #000000;
     }
     
     .navbar .navbar-nav {
@@ -248,7 +248,7 @@ a:focus {
     margin-bottom: 45px;
     padding: 120px 0 0 0;
     overflow: hidden;
-    background: linear-gradient(rgba(32, 43, 199, 0.95), rgba(239, 35, 195, 0.95)), url(../img/hero-bg.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.95), #EF233C), url(../img/hero-bg.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -314,7 +314,7 @@ a:focus {
 
 .hero .hero-btn .btn {
     margin-top: 35px;
-    color: #ae23ef;
+    color: #000000;
     background: #ffffff;
     box-shadow: inset 0 0 0 50px #ffffff;
 }
