@@ -1593,7 +1593,7 @@ a:focus {
   .contenedor2 {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px; /* Espacio entre las imágenes */
+    gap: 12px; /* Espacio entre las imágenes */
   }
   .imagen2 {
     width: 125px; /* Ancho de cada imagen */
