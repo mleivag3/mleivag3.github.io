@@ -847,7 +847,6 @@ a:focus {
 
 .portfolio .portfolio-item {
     position: relative;
-    margin-bottom: 30px; 
 }
 
 .portfolio .portfolio-wrap {
@@ -863,7 +862,7 @@ a:focus {
 .portfolio .portfolio-img img {
     position: relative;
     width: 100%; 
-    height: auto; 
+    height: 100%; 
     object-fit: cover;
     transform: scale(1.1);
     transition: .5s;
@@ -904,27 +903,6 @@ a:focus {
     font-weight: 100;
 }
 
-.portfolio .portfolio-item:hover img {
-    transform: scale(1.05); /* Adjusted scaling effect */
-}
-
-@media (max-width: 992px) {
-    .portfolio .portfolio-item {
-        margin-bottom: 30px; /* Ensure spacing between items on smaller screens */
-    }
-}
-
-@media (max-width: 768px) {
-    .portfolio .portfolio-item {
-        margin-bottom: 30px; /* Ensure spacing between items on smaller screens */
-    }
-}
-
-@media (max-width: 576px) {
-    .portfolio .portfolio-item {
-        margin-bottom: 30px; /* Ensure spacing between items on smaller screens */
-    }
-}
 .portfolio .portfolio-item:hover a.btn {
     color: #EF233C;
     background: transparent;
