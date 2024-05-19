@@ -1598,8 +1598,8 @@ a:focus {
 }
 
 .imagen2 {
-    width: 100px;                /* Ajusta el tamaño de las imágenes según sea necesario */
-    height: auto;
+    max-width: 100px;            /* Ajustamos el tamaño máximo de las imágenes */
+    height: auto;                /* Mantiene la proporción original */
     margin: 10px;                /* Espacio alrededor de cada imagen */
 }
 
@@ -1610,6 +1610,6 @@ a:focus {
     }
     
     .imagen2 {
-        width: 80px;             /* Opcionalmente, podemos ajustar el tamaño de las imágenes en dispositivos móviles */
+        max-width: 80px;         /* Opcionalmente, podemos ajustar el tamaño máximo de las imágenes en dispositivos móviles */
     }
 }
