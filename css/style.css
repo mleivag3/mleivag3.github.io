@@ -1590,14 +1590,26 @@ a:focus {
     }
 }
 
-  .contenedor2 {
+.contenedor2 {
     display: flex;               /* Usamos Flexbox para el contenedor */
     flex-wrap: wrap;             /* Permitimos que las imágenes se ajusten a la siguiente línea */
     justify-content: center;     /* Centramos las imágenes horizontalmente */
-    gap: 10px;       
-  }
-  .imagen2 {
-    width: 100px;               
+    gap: 10px;                   /* Espacio entre las imágenes */
+}
+
+.imagen2 {
+    width: 100px;                /* Ajusta el tamaño de las imágenes según sea necesario */
     height: auto;
-    margin: 10px;    
-  }
+    margin: 10px;                /* Espacio alrededor de cada imagen */
+}
+
+/* Aseguramos que las imágenes estén centradas también en móviles */
+@media (max-width: 768px) {
+    .contenedor2 {
+        justify-content: center; /* Centramos las imágenes en dispositivos móviles */
+    }
+    
+    .imagen2 {
+        width: 80px;             /* Opcionalmente, podemos ajustar el tamaño de las imágenes en dispositivos móviles */
+    }
+}
