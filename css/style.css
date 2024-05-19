@@ -575,8 +575,8 @@ a:focus {
 .experience .timeline .timeline-item {
     position: relative;
     background: inherit;
-    width: 50%;
-    margin-bottom: 30px;
+    width: calc(50% - 30px);
+    margin-bottom: 60px;
 }
 
 .experience .timeline .timeline-item.left {
@@ -594,7 +594,7 @@ a:focus {
     position: absolute;
     width: 16px;
     height: 16px;
-    top: 48px;
+    top: 30px;
     right: -8px;
     background: #ffffff;
     border: 2px solid #EF233C;
@@ -611,11 +611,12 @@ a:focus {
   position: absolute;
   width: 0;
   height: 0;
-  top: 46px;
+  top: 0;
   right: 10px;
   z-index: 1;
   border: 10px solid;
   border-color: transparent transparent transparent #dddddd;
+  bottom: 0; 
 }
 
 .experience .timeline .timeline-item.right::before {
@@ -1598,7 +1599,9 @@ a:focus {
 }
 
 .imagen2 {
-    max-width: 150px;            /* Ajustamos el tamaño máximo de las imágenes */
+    max-width: 120px;            /* Ajustamos el tamaño máximo de las imágenes */
+    max-height: 120px;           /* Ajustamos el tamaño máximo de las imágenes */
+    width: auto;                 /* Mantiene la proporción original */
     height: auto;                /* Mantiene la proporción original */
     margin: 10px;                /* Espacio alrededor de cada imagen */
 }
@@ -1610,6 +1613,7 @@ a:focus {
     }
     
     .imagen2 {
-        max-width: 100px;        /* Ajustamos el tamaño máximo de las imágenes en dispositivos móviles */
+        max-width: 80px;        /* Ajustamos el tamaño máximo de las imágenes en dispositivos móviles */
+        max-height: 80px;       /* Ajustamos el tamaño máximo de las imágenes en dispositivos móviles */
     }
 }
