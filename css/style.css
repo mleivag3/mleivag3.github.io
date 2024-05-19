@@ -1596,7 +1596,7 @@ a:focus {
     gap: 12px; /* Espacio entre las imágenes */
   }
   .imagen2 {
-    width: 125px; /* Ancho de cada imagen */
-    height: 125px; /* Altura de cada imagen */
-    object-fit: contain; /* Escalar las imágenes para llenar el contenedor */
+    width: 100px;               
+    height: auto;
+    margin: 10px;    
   }
