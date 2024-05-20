@@ -1613,7 +1613,7 @@ a:focus {
     }
     
     .imagen2 {
-        max-width: 100px;        /* Ajustamos el tamaño máximo de las imágenes en dispositivos móviles */
-        max-height: 100px;       /* Ajustamos el tamaño máximo de las imágenes en dispositivos móviles */
+        max-width: 90px;        /* Ajustamos el tamaño máximo de las imágenes en dispositivos móviles */
+        max-height: 90px;       /* Ajustamos el tamaño máximo de las imágenes en dispositivos móviles */
     }
 }
