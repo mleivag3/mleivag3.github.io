@@ -1599,8 +1599,8 @@ a:focus {
 }
 
 .imagen2 {
-    max-width: 120px;            /* Ajustamos el tamaño máximo de las imágenes */
-    max-height: 120px;           /* Ajustamos el tamaño máximo de las imágenes */
+    max-width: 100px;            /* Ajustamos el tamaño máximo de las imágenes */
+    max-height: 100px;           /* Ajustamos el tamaño máximo de las imágenes */
     width: auto;                 /* Mantiene la proporción original */
     height: auto;                /* Mantiene la proporción original */
     margin: 10px;                /* Espacio alrededor de cada imagen */
