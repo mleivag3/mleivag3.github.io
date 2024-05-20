@@ -1595,7 +1595,7 @@ a:focus {
     display: flex;               /* Usamos Flexbox para el contenedor */
     flex-wrap: wrap;             /* Permitimos que las imágenes se ajusten a la siguiente línea */
     justify-content: center;     /* Centramos las imágenes horizontalmente */
-    gap: 10px;                   /* Espacio entre las imágenes */
+    gap: 10px;                   
 }
 
 .imagen2 {
