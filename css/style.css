@@ -920,7 +920,7 @@ a:focus {
     width: 100%;
     margin: 45px 0;
     padding: 90px 0;
-    background: #EF233C;
+    background: #1b1b1b; /* Fondo negro sólido */
 }
 
 .banner .container {
@@ -946,7 +946,7 @@ a:focus {
 }
 
 .banner .section-header h2 span {
-    color: #414141;
+    color: #EF233C;
     font-size: 50px;
 }
 
@@ -1630,7 +1630,7 @@ a:focus {
 
 .new-portfolio-section .section-header h2 {
     font-size: 24px;
-    color: #EF233C;
+    color: #000000;
     margin-bottom: 20px;
 }
 
