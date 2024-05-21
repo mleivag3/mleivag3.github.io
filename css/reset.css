@@ -1,0 +1,67 @@
+/* styles.css */
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para la sección de cartera */
+.portfolio {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+}
+
+.portfolio .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.portfolio .section-header p {
+    font-size: 18px;
+    color: #333;
+}
+
+.portfolio .section-header h2 {
+    font-size: 36px;
+    color: #333;
+}
+
+/* Ajustar el grid para que se adapte mejor a diferentes tamaños de pantalla */
+.portfolio .portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajuste flexible */
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.portfolio .portfolio-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio .portfolio-img img {
+    width: 100%;
+    height: auto; /* Mantener proporción */
+    border-radius: 5px;
+}
+
+.portfolio .portfolio-text h3 {
+    font-size: 20px;
+    color: #333;
+    margin-top: 10px;
+}
+
+.portfolio .portfolio-text .btn {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+}
