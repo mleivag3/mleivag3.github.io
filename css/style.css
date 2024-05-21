@@ -1619,71 +1619,89 @@ a:focus {
 }
 
 /* Estilos para la Nueva Sección del Portafolio */
-.portfolio-section {
+.new-portfolio-section {
     padding: 30px 0;
     background-color: #f8f9fa;
 }
 
-.portfolio-section .section-header p {
+.new-portfolio-section .section-header p {
     font-size: 16px;
     color: #333;
 }
 
-.portfolio-section .section-header h2 {
+.new-portfolio-section .section-header h2 {
     font-size: 24px;
     color: #EF233C;
     margin-bottom: 20px;
 }
 
-.portfolio-grid {
+.new-portfolio-grid {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 20px;
 }
 
-.portfolio-item {
+.new-portfolio-item {
     position: relative;
+    overflow: hidden;
 }
 
-.portfolio-item img {
+.new-portfolio-item img {
     width: 100%;
     display: block;
+    transition: transform 0.3s ease;
 }
 
-.portfolio-item .portfolio-overlay {
+.new-portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+.new-portfolio-item .new-portfolio-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    text-align: center;
-    background-color: rgba(239, 35, 60, 0.9);
-    padding: 15px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-.portfolio-item .portfolio-overlay h3 {
-    color: #fff;
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-.portfolio-item .portfolio-overlay .btn {
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: #fff;
-    color: #EF233C;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.portfolio-item:hover .portfolio-overlay {
+.new-portfolio-item:hover .new-portfolio-overlay {
     opacity: 1;
 }
 
+.new-portfolio-item .new-portfolio-overlay h3 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Nuevo estilo para el botón */
+.new-portfolio-item .new-portfolio-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.new-portfolio-item .new-portfolio-btn:hover {
+    background-color: #EF233C;
+    border-color: #EF233C;
+    color: #fff;
+}
+
 @media (min-width: 768px) {
-    .portfolio-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    .new-portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
