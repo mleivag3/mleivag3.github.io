@@ -1617,6 +1617,8 @@ a:focus {
         max-height: 90px;       /* Ajustamos el tamaño máximo de las imágenes en dispositivos móviles */
     }
 }
+
+
 /* Estilos para la Nueva Sección del Portafolio */
 .new-portfolio-section {
     padding: 30px 0;
@@ -1634,15 +1636,44 @@ a:focus {
     margin-bottom: 20px;
 }
 
-.new-portfolio-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 20px;
+.portfolio-filters {
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #0056b3;
+}
+
+.filter-btn.active {
+    background-color: #0056b3;
+}
+
+.swiper-container {
+    width: 100%;
+    position: relative;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .new-portfolio-item {
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 .new-portfolio-item img {
@@ -1680,7 +1711,6 @@ a:focus {
     margin-bottom: 20px;
 }
 
-/* Nuevo estilo para el botón */
 .new-portfolio-item .new-portfolio-btn {
     display: inline-block;
     padding: 10px 20px;
@@ -1699,8 +1729,40 @@ a:focus {
     color: #fff;
 }
 
-@media (min-width: 768px) {
-    .new-portfolio-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+/* Estilos para las flechas de navegación */
+.swiper-button-next,
+.swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
 }
+
+.swiper-button-next {
+    right: 10px;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    content: '>';
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.swiper-button-prev::after {
+    content: '<';
+}
+
