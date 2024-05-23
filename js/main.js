@@ -157,3 +157,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'en', // Idioma original de la página
+        includedLanguages: 'en,fr,es', // Idiomas disponibles para traducir, incluyendo español
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+}
+
+// Cargar el script de Google Translate de forma dinámica
+(function() {
+    var gtScript = document.createElement('script');
+    gtScript.type = 'text/javascript';
+    gtScript.async = true;
+    gtScript.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gtScript, s);
+})();
