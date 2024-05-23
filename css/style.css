@@ -1643,7 +1643,7 @@ a:focus {
 .filter-btn {
     padding: 10px 20px;
     margin: 0 5px;
-    background-color: #007bff;
+    background-color: #EF233C;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -1652,11 +1652,11 @@ a:focus {
 }
 
 .filter-btn:hover {
-    background-color: #0056b3;
+    background-color: #EF233C;
 }
 
 .filter-btn.active {
-    background-color: #0056b3;
+    background-color: #EF233C;
 }
 
 .swiper-container {
@@ -1737,7 +1737,7 @@ a:focus {
     transform: translateY(-50%);
     width: 30px;
     height: 30px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 0, 0, 0.5);
     color: #fff;
     border-radius: 50%;
     cursor: pointer;
