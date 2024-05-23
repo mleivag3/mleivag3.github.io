@@ -1590,7 +1590,6 @@ a:focus {
         padding: 0 5px;
     }
 }
-
 .contenedor2 {
     display: flex;               /* Usamos Flexbox para el contenedor */
     flex-wrap: wrap;             /* Permitimos que las imágenes se ajusten a la siguiente línea */
@@ -1617,7 +1616,6 @@ a:focus {
         max-height: 90px;       /* Ajustamos el tamaño máximo de las imágenes en dispositivos móviles */
     }
 }
-
 
 /* Estilos para la Nueva Sección del Portafolio */
 .new-portfolio-section {
@@ -1765,4 +1763,3 @@ a:focus {
 .swiper-button-prev::after {
     content: '<';
 }
-
