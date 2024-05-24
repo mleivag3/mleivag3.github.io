@@ -676,7 +676,6 @@ a:focus {
     margin: 0;
     font-size: 16px;
 }
-
 @media (max-width: 767.98px) {
     .experience .timeline::after {
         left: 8px;
@@ -685,44 +684,43 @@ a:focus {
     .experience .timeline .timeline-item {
         width: 100%;
         padding-left: 38px;
-    }
-    
-    .experience .timeline .timeline-item.left {
         padding-right: 0;
     }
-    
-    .experience .timeline .timeline-item.right {
-        left: 0%;
-        padding-left: 38px;
-    }
 
-    .experience .timeline .timeline-item.left::after, 
-    .experience .timeline .timeline-item.right::after {
-        left: 0;
+    .experience .timeline .timeline-item::after, 
+    .experience .timeline .timeline-item::before {
+        left: 18px;
     }
     
-    .experience .timeline .timeline-item.left::before,
-    .experience .timeline .timeline-item.right::before {
-        left: 18px;
+    .experience .timeline .timeline-item::before {
         border-color: transparent #dddddd transparent transparent;
     }
-    
-    .experience .timeline .timeline-item.left .timeline-date,
-    .experience .timeline .timeline-item.right .timeline-date {
+
+    .experience .timeline .timeline-item .timeline-date {
         position: relative;
         top: 0;
-        right: auto;
         left: 0;
         text-align: left;
         margin-bottom: 10px;
     }
-    
-    .experience .timeline .timeline-item.left .timeline-text,
-    .experience .timeline .timeline-item.right .timeline-text {
-        border-right: none;
+
+    .experience .timeline .timeline-item .timeline-text {
         border-left: 5px solid #dddddd;
+        border-right: none;
     }
 }
+
+@media (max-width: 575.98px) {
+    .service .service-text h3 {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .service .service-text p {
+        font-size: 14px;
+    }
+}
+
 
 
 /*******************************/
