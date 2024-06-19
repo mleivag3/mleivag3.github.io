@@ -107,3 +107,53 @@
     
 })(jQuery);
 
+document.addEventListener('DOMContentLoaded', function () {
+    const swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+        },
+    });
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.swiper-slide');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.getAttribute('data-category');
+
+            portfolioItems.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            swiper.update();
+
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+        });
+    });
+});
+

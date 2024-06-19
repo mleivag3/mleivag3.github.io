@@ -6,6 +6,7 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free Website Template" name="keywords">
         <meta content="Free Website Template" name="description">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Favicon -->
         <link href="img/favicon.ico" rel="icon">
@@ -19,7 +20,8 @@
         <link href="lib/animate/animate.min.css" rel="stylesheet">
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+       
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
     </head>
@@ -45,6 +47,8 @@
                         <a href="#team" class="nav-item nav-link">Team</a>
                         <a href="#blog" class="nav-item nav-link">Blog</a>
                         <a href="#contact" class="nav-item nav-link">Contact</a>
+                        <div id="google_translate_element"></div>
+                    
                     </div>
                 </div>
             </div>
@@ -67,6 +71,7 @@
                             <div class="hero-btn">
                                 <a class="btn" href="">Hire Me</a>
                                 <a class="btn" href="">Contact Me</a>
+                                
                             </div>
                         </div>
                     </div>
@@ -142,14 +147,16 @@
                         <img src="img/psql.png" alt="Postgres" class="imagen2" loading="lazy">
                         <img src="img/gcp.png" alt="GCP" class="imagen2" loading="lazy">
                         <img src="img/linux.png" alt="Linux" class="imagen2" loading="lazy">
-                        <img src="img/burp.png" alt="Linux" class="imagen2" loading="lazy">
-                        <img src="img/999.png" alt="999" class="imagen2" loading="lazy">
+                        <img src="img/magento.png" alt="Linux" class="imagen2" loading="lazy">
+                        <img src="img/node.png" alt="999" class="imagen2" loading="lazy">
                         <img src="img/grafana.png" alt="Postgres" class="imagen2" loading="lazy">
                         <img src="img/swarm.png" alt="GCP" class="imagen2" loading="lazy">
+                        <img src="img/elastic.png" alt="Linux" class="imagen2" loading="lazy">
                         <img src="img/nmap.png" alt="Linux" class="imagen2" loading="lazy">
                         <img src="img/mysql.png" alt="Linux" class="imagen2" loading="lazy">
                         <img src="img/azure.png" alt="Linux" class="imagen2" loading="lazy">
                         <img src="img/python.png" alt="Linux" class="imagen2" loading="lazy">
+                        
                     </div>
                 </div>
             </div>
@@ -208,7 +215,7 @@
                     <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
                         <div class="timeline-text">
                             <div class="timeline-date">2019 - 2021</div>
-                            <h2>Tech Support</h2>
+                            <h2>Systems Engineer</h2>
                             <h4>BITSO S.A.</h4>
                             <p>
                                 Systems Engineer specializing in IT and Cybersecurity with experience in sales support, 
@@ -222,7 +229,7 @@
                     <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s">
                         <div class="timeline-text">
                             <div class="timeline-date">2019 - 2021</div>
-                            <h2>Systems Engineer</h2>
+                            <h2>Tech Support</h2>
                             <h4>PACAS CENTER S.A.</h4>
                             <p>
                                 Experienced IT Specialist proficient in website and database management,
@@ -235,7 +242,7 @@
                     <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
                         <div class="timeline-text">
                             <div class="timeline-date">2015 - 2024</div>
-                            <h2>Web Developer freelance</h2>
+                            <h2>Web Developer</h2>
                             <h4>Marco Leiva</h4>
                             <p>
                                 Freelance web developer with expertise in designing and developing websites, 
@@ -246,15 +253,7 @@
                                  My approach focuses on delivering tailored and secure solutions to meet each client's specific needs.
                             </p>
                         </div>
-                    </div>
-                    <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s">
-                        <div class="timeline-text">
-                            <div class="timeline-date">2045 - 2050</div>
-                            <h2>Web Developer</h2>
-                            <h4>Soft Agency, San Francisco, CA</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet elit. Aliquam odio dolor, id luctus erat sagittis non. Ut blandit semper pretium.
-                            </p>
+                 
                         </div>
                     </div>
                 </div>
@@ -286,95 +285,107 @@
         </div>
         <!-- Banner End -->
 
-
-        <!-- Portfolio Start -->
-        <div class="portfolio" id="portfolio">
-            <div class="container">
-                <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                    <p>My Portfolio</p>
-                    <h2>My Excellent Portfolio</h2>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <ul id="portfolio-filter">
-                            <li data-filter="*" class="filter-active">All</li>
-                            <li data-filter=".filter-1">Web Design</li>
-                            <li data-filter=".filter-2">Mobile Apps</li>
-                            <li data-filter=".filter-3">Game Dev</li>
-                        </ul>
+<!-- Nueva Sección del Portafolio -->
+<div class="new-portfolio-section" id="new-portfolio-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <p>My Portfolio</p>
+            <h2>Explore My Works</h2>
+        </div>
+        <div class="portfolio-filters text-center">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="development">Development</button>
+            <button class="filter-btn" data-category="cybersecurity">Cybersecurity</button>
+            <button class="filter-btn" data-category="cybersecurity">docker</button>
+        </div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide new-portfolio-item" data-category="development">
+                    <img src="img/portfolio-1.jpg" alt="Portfolio Item 1">
+                    <div class="new-portfolio-overlay">
+                        <h3>Web Page</h3>
+                        <a href="https://Nexabit.com.gt" class="new-portfolio-btn">View Details</a>
                     </div>
                 </div>
-                <div class="row portfolio-container">
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <img src="img/portfolio-1.jpg" alt="Image">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>eCommerce Website</h3>
-                                <a class="btn" href="img/portfolio-1.jpg" data-lightbox="portfolio">+</a>
-                            </div>
-                        </div>
+                <div class="swiper-slide new-portfolio-item" data-category="cybersecurity">
+                    <img src="img/portfolio-2.jpg" alt="Portfolio Item 2">
+                    <div class="new-portfolio-overlay">
+                        <h3>Encryption Data</h3>
+                        <a href="https://github.com/mleivag3/Python" class="new-portfolio-btn">View Details</a>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-2 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <img src="img/portfolio-2.jpg" alt="Image">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>Product Landing Page</h3>
-                                <a class="btn" href="img/portfolio-2.jpg" data-lightbox="portfolio">+</a>
-                            </div>
-                        </div>
+                </div>
+                <div class="swiper-slide new-portfolio-item" data-category="development">
+                    <img src="img/portfolio-3.jpg" alt="Portfolio Item 3">
+                    <div class="new-portfolio-overlay">
+                        <h3>System pay</h3>
+                        <a href="https://github.com/mleivag3/sistemaPagos" class="new-portfolio-btn">View Details</a>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-3 wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <img src="img/portfolio-3.jpg" alt="Image">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>JavaScript quiz game</h3>
-                                <a class="btn" href="img/portfolio-3.jpg" data-lightbox="portfolio">+</a>
-                            </div>
-                        </div>
+                </div>
+                <div class="swiper-slide new-portfolio-item" data-category="docker">
+                    <img src="img/portfolio-4.jpg" alt="Portfolio Item 4">
+                    <div class="new-portfolio-overlay">
+                        <h3>Docker Export volume</h3>
+                        <a href="https://github.com/mleivag3/Docker/tree/main/Exportar-docker-volumen" class="new-portfolio-btn">View Details</a>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <img src="img/portfolio-4.jpg" alt="Image">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>JavaScript drawing</h3>
-                                <a class="btn" href="img/portfolio-4.jpg" data-lightbox="portfolio">+</a>
-                            </div>
-                        </div>
+                </div>
+                <div class="swiper-slide new-portfolio-item" data-category="Development">
+                    <img src="img/portfolio-5.jpg" alt="Portfolio Item 5">
+                    <div class="new-portfolio-overlay">
+                        <h3>Web Site </h3>
+                        <a href="https://jhtecniauto.com.gt/" class="new-portfolio-btn">View Details</a>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-2 wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <img src="img/portfolio-5.jpg" alt="Image">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>Social Mobile Apps</h3>
-                                <a class="btn" href="img/portfolio-5.jpg" data-lightbox="portfolio">+</a>
-                            </div>
-                        </div>
+                </div>
+                <div class="swiper-slide new-portfolio-item" data-category="docker">
+                    <img src="img/portfolio-6.jpg" alt="Portfolio Item 6">
+                    <div class="new-portfolio-overlay">
+                        <h3>Mail Server PosteIO</h3>
+                        <a href="#" class="new-portfolio-btn">View Details</a>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-3 wow fadeInUp" data-wow-delay="1s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <img src="img/portfolio-6.jpg" alt="Image">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>Company Website</h3>
-                                <a class="btn" href="img/portfolio-6.jpg" data-lightbox="portfolio">+</a>
-                            </div>
-                        </div>
+                </div>
+                <div class="swiper-slide new-portfolio-item" data-category="development">
+                    <img src="img/portfolio-7.jpg" alt="Portfolio Item 7">
+                    <div class="new-portfolio-overlay">
+                        <h3>Project Title 7</h3>
+                        <a href="#" class="new-portfolio-btn">View Details</a>
+                    </div>
+                </div>
+                <div class="swiper-slide new-portfolio-item" data-category="cybersecurity">
+                    <img src="img/portfolio-8.jpg" alt="Portfolio Item 8">
+                    <div class="new-portfolio-overlay">
+                        <h3>Project Title 8</h3>
+                        <a href="#" class="new-portfolio-btn">View Details</a>
+                    </div>
+                </div>
+                <div class="swiper-slide new-portfolio-item" data-category="development">
+                    <img src="img/portfolio-9.jpg" alt="Portfolio Item 9">
+                    <div class="new-portfolio-overlay">
+                        <h3>Project Title 9</h3>
+                        <a href="#" class="new-portfolio-btn">View Details</a>
+                    </div>
+                </div>
+                <div class="swiper-slide new-portfolio-item" data-category="cybersecurity">
+                    <img src="img/portfolio-10.jpg" alt="Portfolio Item 10">
+                    <div class="new-portfolio-overlay">
+                        <h3>Project Title 10</h3>
+                        <a href="#" class="new-portfolio-btn">View Details</a>
                     </div>
                 </div>
             </div>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <!-- Agrega los botones de navegación del carrusel -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
         </div>
-        <!-- Portfolio End -->
+    </div>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="main.js"></script>
+        
         
         
         <!-- Banner Start -->

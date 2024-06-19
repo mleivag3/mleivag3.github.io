@@ -547,7 +547,6 @@ a:focus {
     }
 }
 
-
 /*******************************/
 /******* Experience CSS ********/
 /*******************************/
@@ -723,6 +722,7 @@ a:focus {
         border-left: 5px solid #dddddd;
     }
 }
+
 
 
 /*******************************/
@@ -920,7 +920,7 @@ a:focus {
     width: 100%;
     margin: 45px 0;
     padding: 90px 0;
-    background: #EF233C;
+    background: #1b1b1b; /* Fondo negro sólido */
 }
 
 .banner .container {
@@ -946,7 +946,7 @@ a:focus {
 }
 
 .banner .section-header h2 span {
-    color: #414141;
+    color: #EF233C;
     font-size: 50px;
 }
 
@@ -1590,7 +1590,6 @@ a:focus {
         padding: 0 5px;
     }
 }
-
 .contenedor2 {
     display: flex;               /* Usamos Flexbox para el contenedor */
     flex-wrap: wrap;             /* Permitimos que las imágenes se ajusten a la siguiente línea */
@@ -1615,5 +1614,188 @@ a:focus {
     .imagen2 {
         max-width: 90px;        /* Ajustamos el tamaño máximo de las imágenes en dispositivos móviles */
         max-height: 90px;       /* Ajustamos el tamaño máximo de las imágenes en dispositivos móviles */
+    }
+}
+
+/* Estilos para la Nueva Sección del Portafolio */
+.new-portfolio-section {
+    padding: 30px 0;
+    background-color: #f8f9fa;
+}
+
+.new-portfolio-section .section-header p {
+    font-size: 16px;
+    color: #333;
+}
+
+.new-portfolio-section .section-header h2 {
+    font-size: 24px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.portfolio-filters {
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: #EF233C;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #EF233C;
+}
+
+.filter-btn.active {
+    background-color: #EF233C;
+}
+
+.swiper-container {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.swiper-slide {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-portfolio-item {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.new-portfolio-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.new-portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+.new-portfolio-item .new-portfolio-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.new-portfolio-item:hover .new-portfolio-overlay {
+    opacity: 1;
+}
+
+.new-portfolio-item .new-portfolio-overlay h3 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.new-portfolio-item .new-portfolio-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.new-portfolio-item .new-portfolio-btn:hover {
+    background-color: #EF233C;
+    border-color: #EF233C;
+    color: #fff;
+}
+
+/* Estilos para las flechas de navegación */
+.swiper-button-next,
+.swiper-button-prev {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(239, 35, 60, 0.8);
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 20px;
+}
+
+.swiper-button-next {
+    right: 10px;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+@media (max-width: 767.98px) {
+    .new-portfolio-section .section-header h2 {
+        font-size: 20px;
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .new-portfolio-item .new-portfolio-overlay h3 {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .new-portfolio-item .new-portfolio-btn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .new-portfolio-section .section-header p {
+        font-size: 14px;
+    }
+
+    .new-portfolio-section .section-header h2 {
+        font-size: 18px;
+    }
+
+    .filter-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .new-portfolio-item .new-portfolio-overlay h3 {
+        font-size: 12px;
+    }
+
+    .new-portfolio-item .new-portfolio-btn {
+        font-size: 10px;
+        padding: 4px 8px;
     }
 }
