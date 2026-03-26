@@ -202,6 +202,50 @@
         .tl-tags { display:flex; flex-wrap:wrap; gap:0.35rem; }
         .tl-tag { padding:0.18rem 0.55rem; font-size:0.68rem; border-radius:4px; background:rgba(0,212,255,0.07); color:var(--cyan); border:1px solid rgba(0,212,255,0.15); }
 
+        /* PROJECTS */
+        #projects { padding:8rem 0; background:var(--bg2); }
+        .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1.5rem; }
+        .proj-card {
+            border:1px solid var(--glass-border); border-radius:16px;
+            background:var(--card); backdrop-filter:blur(10px);
+            overflow:hidden; transition:all 0.35s; display:flex; flex-direction:column;
+        }
+        .proj-card:hover { transform:translateY(-6px); box-shadow:0 20px 40px rgba(0,0,0,0.4); border-color:rgba(0,212,255,0.2); }
+        .proj-header {
+            padding:1.8rem 1.8rem 1.2rem;
+            position:relative; overflow:hidden;
+        }
+        .proj-header::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:3px;
+        }
+        .proj-card:nth-child(1) .proj-header::before { background:linear-gradient(90deg,#FF9900,#ff6b35); }
+        .proj-card:nth-child(2) .proj-header::before { background:linear-gradient(90deg,var(--cyan),#00b4d8); }
+        .proj-card:nth-child(3) .proj-header::before { background:linear-gradient(90deg,var(--purple),#b388ff); }
+        .proj-card:nth-child(4) .proj-header::before { background:linear-gradient(90deg,var(--pink),#ff6b9d); }
+        .proj-card:nth-child(5) .proj-header::before { background:linear-gradient(90deg,#00b894,#00cec9); }
+        .proj-icon {
+            width:48px; height:48px; border-radius:12px;
+            display:flex; align-items:center; justify-content:center;
+            font-size:1.3rem; margin-bottom:1rem;
+        }
+        .proj-card:nth-child(1) .proj-icon { background:rgba(255,153,0,0.12); color:#FF9900; }
+        .proj-card:nth-child(2) .proj-icon { background:rgba(0,212,255,0.12); color:var(--cyan); }
+        .proj-card:nth-child(3) .proj-icon { background:rgba(123,47,255,0.12); color:var(--purple); }
+        .proj-card:nth-child(4) .proj-icon { background:rgba(255,45,120,0.12); color:var(--pink); }
+        .proj-card:nth-child(5) .proj-icon { background:rgba(0,184,148,0.12); color:#00b894; }
+        .proj-title { font-size:1rem; font-weight:700; margin-bottom:0.3rem; }
+        .proj-company { font-size:0.78rem; color:var(--text-dim); margin-bottom:1rem; }
+        .proj-desc { color:var(--text-dim); font-size:0.88rem; line-height:1.75; }
+        .proj-body { padding:0 1.8rem 1.5rem; flex:1; display:flex; flex-direction:column; gap:1rem; }
+        .proj-tags { display:flex; flex-wrap:wrap; gap:0.4rem; }
+        .proj-tag { padding:0.2rem 0.6rem; font-size:0.7rem; border-radius:4px; background:rgba(255,255,255,0.04); color:var(--text-dim); border:1px solid var(--glass-border); }
+        .proj-footer { padding:1rem 1.8rem 1.5rem; border-top:1px solid var(--glass-border); display:flex; align-items:center; justify-content:space-between; }
+        .proj-badge { font-family:'Orbitron',sans-serif; font-size:0.6rem; letter-spacing:0.1em; padding:0.25rem 0.7rem; border-radius:20px; }
+        .proj-badge.current { background:rgba(0,212,255,0.1); color:var(--cyan); border:1px solid rgba(0,212,255,0.3); }
+        .proj-badge.completed { background:rgba(0,184,148,0.1); color:#00b894; border:1px solid rgba(0,184,148,0.3); }
+        .proj-link { font-size:0.8rem; color:var(--text-dim); text-decoration:none; display:flex; align-items:center; gap:0.4rem; transition:color 0.3s; }
+        .proj-link:hover { color:var(--cyan); }
+
         /* CERTS */
         #certifications { padding:8rem 0; background:var(--bg2); }
         .cert-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:0.9rem; }
@@ -274,6 +318,7 @@
         <li><a href="#about">Sobre mí</a></li>
         <li><a href="#skills">Habilidades</a></li>
         <li><a href="#experience">Experiencia</a></li>
+        <li><a href="#projects">Proyectos</a></li>
         <li><a href="#certifications">Certificados</a></li>
         <li><a href="#contact">Contacto</a></li>
     </ul>
@@ -296,6 +341,9 @@
                 <div class="hero-btns">
                     <a href="#contact" class="btn-p">Contáctame</a>
                     <a href="#experience" class="btn-o">Ver Experiencia</a>
+                    <a href="2025 CV Marco Leiva.pdf" download class="btn-o" style="border-color:var(--purple);color:var(--purple)">
+                        <i class="fas fa-download" style="margin-right:0.5rem"></i>Descargar CV
+                    </a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat"><div class="stat-num">7+</div><div class="stat-label">Años exp.</div></div>
@@ -671,6 +719,125 @@
 </section>
 
 <!-- CERTIFICATIONS -->
+<!-- PROJECTS -->
+<section id="projects">
+    <div class="container">
+        <div style="text-align:center;margin-bottom:3.5rem" class="fade-up">
+            <div class="section-tag">// Trabajo destacado</div>
+            <h2 class="section-title">Proyectos & <span>Experiencias</span></h2>
+            <div class="section-divider" style="margin:1rem auto 0"></div>
+        </div>
+        <div class="projects-grid">
+
+            <div class="proj-card fade-up">
+                <div class="proj-header">
+                    <div class="proj-icon"><i class="fab fa-aws"></i></div>
+                    <div class="proj-title">Infraestructura Cloud AWS — Fintech POS</div>
+                    <div class="proj-company"><i class="fas fa-building" style="margin-right:0.4rem"></i>Paggo App · Banca & Tecnología</div>
+                    <p class="proj-desc">Diseño y gestión de infraestructura crítica en AWS para sistema POS bancario. Configuración de Elastic Beanstalk, RDS, CodePipeline, Lambda y Route 53. Escaneo y remediación de vulnerabilidades, análisis de código con Fluid Attacks y revisión continua con SonarQube.</p>
+                </div>
+                <div class="proj-body">
+                    <div class="proj-tags">
+                        <span class="proj-tag">AWS</span><span class="proj-tag">Elastic Beanstalk</span>
+                        <span class="proj-tag">RDS</span><span class="proj-tag">Lambda</span>
+                        <span class="proj-tag">CodePipeline</span><span class="proj-tag">Fluid Attacks</span>
+                        <span class="proj-tag">SonarQube</span><span class="proj-tag">Selenium</span>
+                    </div>
+                </div>
+                <div class="proj-footer">
+                    <span class="proj-badge completed">Completado</span>
+                    <span style="font-size:0.75rem;color:var(--text-dim)">Dic 2024 — Abr 2025</span>
+                </div>
+            </div>
+
+            <div class="proj-card fade-up" style="transition-delay:0.1s">
+                <div class="proj-header">
+                    <div class="proj-icon"><i class="fas fa-cloud"></i></div>
+                    <div class="proj-title">Liderazgo de Infraestructura & Cloud</div>
+                    <div class="proj-company"><i class="fas fa-star" style="margin-right:0.4rem;color:var(--cyan)"></i>Posición actual</div>
+                    <p class="proj-desc">Responsable directo de toda la infraestructura AWS organizacional. Implementación de automatizaciones, DevOps, resguardo de información crítica y aplicación de buenas prácticas de seguridad. Arquitectura cloud escalable con mejora continua.</p>
+                </div>
+                <div class="proj-body">
+                    <div class="proj-tags">
+                        <span class="proj-tag">AWS</span><span class="proj-tag">IaC / Terraform</span>
+                        <span class="proj-tag">DevOps</span><span class="proj-tag">Automatizaciones</span>
+                        <span class="proj-tag">Backup & Recovery</span><span class="proj-tag">Seguridad</span>
+                        <span class="proj-tag">Mejora Continua</span>
+                    </div>
+                </div>
+                <div class="proj-footer">
+                    <span class="proj-badge current">🟢 En curso</span>
+                    <span style="font-size:0.75rem;color:var(--text-dim)">2025 — Presente</span>
+                </div>
+            </div>
+
+            <div class="proj-card fade-up" style="transition-delay:0.2s">
+                <div class="proj-header">
+                    <div class="proj-icon"><i class="fas fa-industry"></i></div>
+                    <div class="proj-title">Transformación Digital Agroindustrial</div>
+                    <div class="proj-company"><i class="fas fa-building" style="margin-right:0.4rem"></i>Agropecuaria Popoyan · Agroindustria</div>
+                    <p class="proj-desc">Liderazgo de equipo multidisciplinar para implementación de DevSecOps, microservicios y ciberseguridad en Google Cloud Platform. Coordinación de QA, bases de datos y mejoras de infraestructura. Resultado: 80% de mejora en el ratio tecnológico de la organización.</p>
+                </div>
+                <div class="proj-body">
+                    <div class="proj-tags">
+                        <span class="proj-tag">Google Cloud</span><span class="proj-tag">Microservicios</span>
+                        <span class="proj-tag">DevSecOps</span><span class="proj-tag">Docker</span>
+                        <span class="proj-tag">Jenkins</span><span class="proj-tag">Cloudflare WAF</span>
+                        <span class="proj-tag">SCRUM</span>
+                    </div>
+                </div>
+                <div class="proj-footer">
+                    <span class="proj-badge completed">Completado</span>
+                    <span style="font-size:0.75rem;color:var(--text-dim)">2021 — 2024</span>
+                </div>
+            </div>
+
+            <div class="proj-card fade-up" style="transition-delay:0.3s">
+                <div class="proj-header">
+                    <div class="proj-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="proj-title">Implementación de Ciberseguridad Corporativa</div>
+                    <div class="proj-company"><i class="fas fa-building" style="margin-right:0.4rem"></i>BITSO S.A. · Tecnología & Seguridad</div>
+                    <p class="proj-desc">Coordinación e implementación de soluciones de ciberseguridad para clientes enterprise en Guatemala: banca, agroindustria y empresas internacionales. Despliegue de McAfee, ManageEngine, DigiCert, Yubico, ESET, Azure y Cloudflare WAF.</p>
+                </div>
+                <div class="proj-body">
+                    <div class="proj-tags">
+                        <span class="proj-tag">McAfee</span><span class="proj-tag">ESET</span>
+                        <span class="proj-tag">Cloudflare</span><span class="proj-tag">Azure</span>
+                        <span class="proj-tag">Yubico MFA</span><span class="proj-tag">DigiCert</span>
+                        <span class="proj-tag">ManageEngine</span>
+                    </div>
+                </div>
+                <div class="proj-footer">
+                    <span class="proj-badge completed">Completado</span>
+                    <span style="font-size:0.75rem;color:var(--text-dim)">2019 — 2020</span>
+                </div>
+            </div>
+
+            <div class="proj-card fade-up" style="transition-delay:0.4s">
+                <div class="proj-header">
+                    <div class="proj-icon"><i class="fas fa-laptop-code"></i></div>
+                    <div class="proj-title">Desarrollo Web & Ecommerce Freelance</div>
+                    <div class="proj-company"><i class="fas fa-user-tie" style="margin-right:0.4rem"></i>Consultoría independiente</div>
+                    <p class="proj-desc">Diseño y desarrollo de sitios web responsivos, tiendas online con WooCommerce, optimización SEO y estrategia digital. Implementación de seguridad web: WAF, configuración de DNS, dominios y gestión de bases de datos para múltiples clientes.</p>
+                </div>
+                <div class="proj-body">
+                    <div class="proj-tags">
+                        <span class="proj-tag">WordPress</span><span class="proj-tag">WooCommerce</span>
+                        <span class="proj-tag">HTML/CSS/JS</span><span class="proj-tag">SEO</span>
+                        <span class="proj-tag">WAF</span><span class="proj-tag">DNS</span>
+                        <span class="proj-tag">MySQL</span>
+                    </div>
+                </div>
+                <div class="proj-footer">
+                    <span class="proj-badge current">🟢 Activo</span>
+                    <span style="font-size:0.75rem;color:var(--text-dim)">Continuo</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 <section id="certifications">
     <div class="container">
         <div style="text-align:center;margin-bottom:3.5rem" class="fade-up">
@@ -725,6 +892,10 @@
                     <a href="https://github.com/mleivag3" target="_blank" class="c-link">
                         <div class="c-icon"><i class="fab fa-github"></i></div>
                         <div class="c-text"><span>GitHub</span><strong>github.com/mleivag3</strong></div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mleivag3" target="_blank" class="c-link">
+                        <div class="c-icon" style="color:#0a66c2;border-color:rgba(10,102,194,0.3)"><i class="fab fa-linkedin-in"></i></div>
+                        <div class="c-text"><span>LinkedIn</span><strong>linkedin.com/in/mleivag3</strong></div>
                     </a>
                     <a class="c-link">
                         <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
