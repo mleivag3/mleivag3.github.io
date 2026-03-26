@@ -289,9 +289,10 @@
         .fade-up { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease,transform 0.7s ease; }
         .fade-up.visible { opacity:1; transform:translateY(0); }
 
-        ::-webkit-scrollbar { width:4px; }
-        ::-webkit-scrollbar-track { background:var(--bg); }
-        ::-webkit-scrollbar-thumb { background:var(--purple); border-radius:3px; }
+        ::-webkit-scrollbar { width:8px; }
+        ::-webkit-scrollbar-track { background:rgba(255,255,255,0.03); }
+        ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,var(--cyan),var(--purple)); border-radius:6px; }
+        ::-webkit-scrollbar-thumb:hover { background:linear-gradient(180deg,var(--purple),var(--cyan)); }
 
         @media(max-width:900px) {
             .hero-grid { grid-template-columns:1fr; }
@@ -341,9 +342,6 @@
                 <div class="hero-btns">
                     <a href="#contact" class="btn-p">Contáctame</a>
                     <a href="#experience" class="btn-o">Ver Experiencia</a>
-                    <a href="2025 CV Marco Leiva.pdf" download class="btn-o" style="border-color:var(--purple);color:var(--purple)">
-                        <i class="fas fa-download" style="margin-right:0.5rem"></i>Descargar CV
-                    </a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat"><div class="stat-num">7+</div><div class="stat-label">Años exp.</div></div>
@@ -714,6 +712,25 @@
                     </div>
                 </div>
             </div>
+
+            <div class="tl-item fade-up" style="transition-delay:0.6s">
+                <div class="tl-dot" style="background:var(--cyan);box-shadow:0 0 12px var(--cyan)"></div>
+                <div class="tl-card">
+                    <div class="tl-head">
+                        <div class="tl-title"><i class="fas fa-brain" style="margin-right:0.5rem;color:var(--cyan)"></i>Automatizaciones con IA Empresariales</div>
+                        <div class="tl-date">2024 — 2025</div>
+                    </div>
+                    <div class="tl-company"><i class="fas fa-robot" style="margin-right:0.4rem"></i>Consultoría & Clientes empresariales</div>
+                    <p class="tl-desc">Diseño e implementación de flujos de automatización inteligente integrando modelos de IA (Claude AI, OpenAI) con plataformas como n8n y Make. Automatización de procesos operativos, generación de reportes automáticos, clasificación de datos, agentes de atención al cliente con IA y optimización de flujos internos. Reducción de tiempos operativos de hasta 70% en procesos clave.</p>
+                    <div class="tl-tags">
+                        <span class="tl-tag">Claude AI</span><span class="tl-tag">OpenAI</span>
+                        <span class="tl-tag">n8n</span><span class="tl-tag">Make</span>
+                        <span class="tl-tag">AI Agents</span><span class="tl-tag">LangChain</span>
+                        <span class="tl-tag">Prompt Engineering</span><span class="tl-tag">RAG</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -831,6 +848,28 @@
                 <div class="proj-footer">
                     <span class="proj-badge current">🟢 Activo</span>
                     <span style="font-size:0.75rem;color:var(--text-dim)">Continuo</span>
+                </div>
+            </div>
+
+            <div class="proj-card fade-up" style="transition-delay:0.5s">
+                <div class="proj-header">
+                    <div class="proj-icon"><i class="fas fa-brain"></i></div>
+                    <div class="proj-title">Automatizaciones con IA Empresariales</div>
+                    <div class="proj-company"><i class="fas fa-robot" style="margin-right:0.4rem"></i>Consultoría & Clientes empresariales</div>
+                    <p class="proj-desc">Diseño e implementación de flujos de automatización inteligente para empresas, integrando modelos de IA (Claude AI, OpenAI) con herramientas como n8n y Make. Automatización de procesos operativos, generación de reportes, clasificación de datos, atención al cliente con agentes IA y optimización de flujos de trabajo internos, reduciendo tiempos operativos hasta un 70%.</p>
+                </div>
+                <div class="proj-body">
+                    <div class="proj-tags">
+                        <span class="proj-tag">Claude AI</span><span class="proj-tag">OpenAI</span>
+                        <span class="proj-tag">n8n</span><span class="proj-tag">Make</span>
+                        <span class="proj-tag">AI Agents</span><span class="proj-tag">LangChain</span>
+                        <span class="proj-tag">Zapier</span><span class="proj-tag">Prompt Engineering</span>
+                        <span class="proj-tag">RAG</span>
+                    </div>
+                </div>
+                <div class="proj-footer">
+                    <span class="proj-badge completed">Completado</span>
+                    <span style="font-size:0.75rem;color:var(--text-dim)">2024 — 2025</span>
                 </div>
             </div>
 
