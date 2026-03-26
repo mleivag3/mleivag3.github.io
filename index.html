@@ -4,6 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marco Leiva | Cybersecurity & DevOps Engineer</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Ingeniero en Sistemas con Maestría en Ciberseguridad. 7+ años liderando infraestructura Cloud AWS, DevOps, Ciberseguridad y automatizaciones con IA en Centroamérica.">
+    <meta name="keywords" content="Marco Leiva, Ciberseguridad, DevOps, AWS, Cloud, Guatemala, Ethical Hacking, Infraestructura, Automatizaciones IA">
+    <meta name="author" content="Marco Leiva">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph (LinkedIn, WhatsApp, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mleivag3.github.io/">
+    <meta property="og:title" content="Marco Leiva | Cloud & Cybersecurity Engineer">
+    <meta property="og:description" content="Ingeniero en Sistemas con Maestría en Ciberseguridad. 7+ años liderando infraestructura AWS, DevOps y automatizaciones con IA en Centroamérica.">
+    <meta property="og:image" content="https://mleivag3.github.io/img/og-preview.png">
+    <meta property="og:locale" content="es_GT">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Marco Leiva | Cloud & Cybersecurity Engineer">
+    <meta name="twitter:description" content="7+ años liderando infraestructura AWS, DevOps y ciberseguridad en Centroamérica.">
+    <meta name="twitter:image" content="https://mleivag3.github.io/img/og-preview.png">
+
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23050510'/><text y='68' x='50' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='44' fill='url(%23g)'>ML</text><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='0'><stop offset='0%25' stop-color='%2300d4ff'/><stop offset='100%25' stop-color='%237b2fff'/></linearGradient></defs></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -297,6 +318,30 @@
         .cert-icon { width:34px; height:34px; border-radius:8px; background:linear-gradient(135deg,var(--cyan),var(--purple)); display:flex; align-items:center; justify-content:center; font-size:0.85rem; color:#fff; flex-shrink:0; }
         .cert-name { font-size:0.82rem; font-weight:500; line-height:1.3; }
 
+        /* GITHUB STATS */
+        #github-stats { padding:8rem 0; background:var(--bg); }
+        .stats-intro { max-width:560px; margin-bottom:3rem; }
+        .stats-intro p { color:var(--text-dim); font-size:0.95rem; line-height:1.8; margin-top:0.5rem; }
+        .stats-grid {
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:1.5rem;
+            margin-bottom:1.5rem;
+        }
+        .stats-grid.single { grid-template-columns:1fr; }
+        .gh-card {
+            border:1px solid var(--glass-border); border-radius:16px;
+            background:var(--card); overflow:hidden;
+            transition:all 0.3s; position:relative;
+        }
+        .gh-card::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:2px;
+            background:linear-gradient(90deg,var(--cyan),var(--purple));
+        }
+        .gh-card:hover { border-color:rgba(0,212,255,0.25); transform:translateY(-4px); box-shadow:0 16px 36px rgba(0,0,0,0.35); }
+        .gh-card img { width:100%; display:block; border-radius:15px; }
+        .streak-card { grid-column:1/-1; }
+
         /* CONTACT */
         #contact { padding:8rem 0; background:var(--bg); }
         .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; }
@@ -369,6 +414,7 @@
         <li><a href="#skills">Habilidades</a></li>
         <li><a href="#experience">Experiencia</a></li>
         <li><a href="#projects">Proyectos</a></li>
+        <li><a href="#github-stats">GitHub</a></li>
         <li><a href="#certifications">Certificados</a></li>
         <li><a href="#contact">Contacto</a></li>
     </ul>
@@ -922,6 +968,50 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+</section>
+
+<!-- GITHUB STATS -->
+<section id="github-stats">
+    <div class="container">
+        <div class="fade-up">
+            <div class="section-tag">// Actividad en GitHub</div>
+            <h2 class="section-title">Stats & <span>Contribuciones</span></h2>
+            <div class="section-divider"></div>
+            <div class="stats-intro">
+                <p>Actividad real de mi cuenta GitHub. Repositorios públicos, lenguajes más utilizados y racha de contribuciones.</p>
+            </div>
+        </div>
+        <div class="stats-grid fade-up" style="transition-delay:0.1s">
+            <div class="gh-card">
+                <img
+                    src="https://github-readme-stats.vercel.app/api?username=mleivag3&show_icons=true&count_private=true&hide_border=true&bg_color=08081800&title_color=00d4ff&text_color=a0a0c8&icon_color=7b2fff&ring_color=00d4ff"
+                    alt="GitHub Stats"
+                    loading="lazy"
+                    onerror="this.closest('.gh-card').style.display='none'">
+            </div>
+            <div class="gh-card">
+                <img
+                    src="https://github-readme-stats.vercel.app/api/top-langs/?username=mleivag3&layout=compact&hide_border=true&bg_color=08081800&title_color=00d4ff&text_color=a0a0c8&langs_count=8"
+                    alt="Top Languages"
+                    loading="lazy"
+                    onerror="this.closest('.gh-card').style.display='none'">
+            </div>
+        </div>
+        <div class="stats-grid fade-up" style="transition-delay:0.2s">
+            <div class="gh-card streak-card">
+                <img
+                    src="https://streak-stats.demolab.com?user=mleivag3&hide_border=true&background=08081800&stroke=7b2fff&ring=00d4ff&fire=ff2d78&currStreakLabel=00d4ff&sideLabels=a0a0c8&dates=7070a0&currStreakNum=ffffff&sideNums=e0e0ff"
+                    alt="GitHub Streak"
+                    loading="lazy"
+                    onerror="this.closest('.gh-card').style.display='none'">
+            </div>
+        </div>
+        <div class="fade-up" style="transition-delay:0.3s;margin-top:1.5rem">
+            <a href="https://github.com/mleivag3" target="_blank" class="btn-o" style="display:inline-flex;align-items:center;gap:0.6rem">
+                <i class="fab fa-github"></i> Ver perfil completo en GitHub
+            </a>
         </div>
     </div>
 </section>
