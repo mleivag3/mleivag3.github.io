@@ -731,12 +731,12 @@
                     </a>
                     <a class="c-link">
                         <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div class="c-text"><span>Ubicación</span><strong>Amatitlán, Guatemala</strong></div>
+                        <div class="c-text"><span>Ubicación</span><strong>Guatemala, Centroamérica</strong></div>
                     </a>
                 </div>
             </div>
             <div class="fade-up" style="transition-delay:0.15s">
-                <form class="contact-form" onsubmit="handleSubmit(event)">
+                <form class="contact-form" id="contact-form" action="https://formspree.io/f/TU_ID_AQUI" method="POST">
                     <div class="form-row">
                         <div class="fg"><label>Nombre</label><input type="text" placeholder="Tu nombre" required></div>
                         <div class="fg"><label>Email</label><input type="email" placeholder="tu@email.com" required></div>
@@ -753,7 +753,7 @@
 </section>
 
 <footer>
-    <p>© 2025 <span>Marco Leiva</span> — Diseñado con pasión desde Guatemala</p>
+    <p>© <span id="footer-year"></span> <span>Marco Leiva</span> — Diseñado con pasión desde Guatemala</p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -874,13 +874,38 @@ window.addEventListener('scroll',()=>{
 function toggleNav(){ document.getElementById('navLinks').classList.toggle('open'); }
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
 
-// FORM
-function handleSubmit(e){
-    e.preventDefault();
-    const btn=e.target.querySelector('button[type=submit]');
-    btn.innerHTML='<i class="fas fa-check" style="margin-right:0.5rem"></i>¡Enviado!';
-    btn.style.background='linear-gradient(135deg,#00b894,#00cec9)';
-    setTimeout(()=>{btn.innerHTML='<i class="fas fa-paper-plane" style="margin-right:0.5rem"></i>Enviar Mensaje';btn.style.background='';e.target.reset();},3000);
+// AÑO AUTOMÁTICO
+document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+// FORM con Formspree
+const contactForm = document.getElementById('contact-form');
+if(contactForm) {
+    contactForm.addEventListener('submit', async function(e){
+        e.preventDefault();
+        const btn = this.querySelector('button[type=submit]');
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right:0.5rem"></i>Enviando...';
+        btn.disabled = true;
+
+        const data = new FormData(this);
+        try {
+            const res = await fetch(this.action, {
+                method:'POST', body:data, headers:{Accept:'application/json'}
+            });
+            if(res.ok){
+                btn.innerHTML = '<i class="fas fa-check" style="margin-right:0.5rem"></i>¡Mensaje enviado!';
+                btn.style.background = 'linear-gradient(135deg,#00b894,#00cec9)';
+                this.reset();
+                setTimeout(()=>{ btn.innerHTML=originalHTML; btn.style.background=''; btn.disabled=false; }, 4000);
+            } else {
+                throw new Error();
+            }
+        } catch {
+            btn.innerHTML = '<i class="fas fa-exclamation-triangle" style="margin-right:0.5rem"></i>Error al enviar';
+            btn.style.background = 'linear-gradient(135deg,#e17055,#d63031)';
+            setTimeout(()=>{ btn.innerHTML=originalHTML; btn.style.background=''; btn.disabled=false; }, 3000);
+        }
+    });
 }
 </script>
 </body>
