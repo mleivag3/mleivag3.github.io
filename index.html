@@ -172,15 +172,15 @@
         .tag.k { border-color:rgba(255,45,120,0.3); color:var(--pink); background:rgba(255,45,120,0.05); }
         .tag:hover { transform:scale(1.05); }
 
-        .tech-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(95px,1fr)); gap:0.9rem; }
+        .tech-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); gap:1rem; }
         .tech-item {
-            display:flex; flex-direction:column; align-items:center; gap:0.5rem;
-            padding:1rem 0.5rem; border:1px solid var(--glass-border); border-radius:12px;
+            display:flex; flex-direction:column; align-items:center; gap:0.6rem;
+            padding:1.2rem 0.5rem; border:1px solid var(--glass-border); border-radius:14px;
             background:var(--glass); transition:all 0.3s; cursor:default;
         }
-        .tech-item:hover { border-color:rgba(0,212,255,0.35); background:rgba(0,212,255,0.05); transform:translateY(-3px); }
-        .tech-item img { width:34px; height:34px; object-fit:contain; filter:grayscale(0.2); }
-        .tech-item span { font-size:0.68rem; color:var(--text-dim); text-align:center; }
+        .tech-item:hover { border-color:rgba(0,212,255,0.4); background:rgba(0,212,255,0.06); transform:translateY(-4px); box-shadow:0 8px 20px rgba(0,0,0,0.3); }
+        .tech-item img { width:40px; height:40px; object-fit:contain; }
+        .tech-item span { font-size:0.7rem; color:var(--text-dim); text-align:center; font-weight:500; }
 
         /* EXPERIENCE */
         #experience { padding:8rem 0; background:var(--bg); }
@@ -436,22 +436,125 @@
         </div>
         <div class="fade-up">
             <div class="tech-grid">
-                <div class="tech-item"><img src="img/dkr.png" alt="Docker"><span>Docker</span></div>
-                <div class="tech-item"><img src="img/jenkins.svg" alt="Jenkins"><span>Jenkins</span></div>
-                <div class="tech-item"><img src="img/azure.png" alt="Azure"><span>Azure</span></div>
-                <div class="tech-item"><img src="img/gcp.png" alt="GCP"><span>Google Cloud</span></div>
-                <div class="tech-item"><img src="img/git.png" alt="Git"><span>Git</span></div>
-                <div class="tech-item"><img src="img/linux.png" alt="Linux"><span>Linux</span></div>
-                <div class="tech-item"><img src="img/python.png" alt="Python"><span>Python</span></div>
-                <div class="tech-item"><img src="img/node.png" alt="Node.js"><span>Node.js</span></div>
-                <div class="tech-item"><img src="img/mysql.png" alt="MySQL"><span>MySQL</span></div>
-                <div class="tech-item"><img src="img/psql.png" alt="PostgreSQL"><span>PostgreSQL</span></div>
-                <div class="tech-item"><img src="img/cloudflare.png" alt="Cloudflare"><span>Cloudflare</span></div>
-                <div class="tech-item"><img src="img/grafana.png" alt="Grafana"><span>Grafana</span></div>
-                <div class="tech-item"><img src="img/elastic.png" alt="Elastic"><span>Elastic</span></div>
-                <div class="tech-item"><img src="img/nmap.png" alt="Nmap"><span>Nmap</span></div>
-                <div class="tech-item"><img src="img/metasp.png" alt="Metasploit"><span>Metasploit</span></div>
-                <div class="tech-item"><img src="img/manageengine.png" alt="ManageEngine"><span>ManageEngine</span></div>
+                <!-- DevOps & CI/CD -->
+                <div class="tech-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker">
+                    <span>Docker</span>
+                </div>
+                <div class="tech-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-original.svg" alt="Kubernetes">
+                    <span>Kubernetes</span>
+                </div>
+                <div class="tech-item">
+                    <img src="https://cdn.simpleicons.org/terraform/7B42BC" alt="Terraform">
+                    <span>Terraform</span>
+                </div>
+                <div class="tech-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg" alt="Jenkins">
+                    <span>Jenkins</span>
+                </div>
+                <div class="tech-item">
+                    <img src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub">
+                    <span>GitHub</span>
+                </div>
+                <div class="tech-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git">
+                    <span>Git</span>
+                </div>
+                <div class="tech-item">
+                    <img src="https://cdn.simpleicons.org/ansible/EE0000" alt="Ansible">
+                    <span>Ansible</span>
+                </div>
+                <div class="tech-item">
+                    <img src="https://cdn.simpleicons.org/githubactions/2088FF" alt="GitHub Actions">
+                    <span>GH Actions</span>
+                </div>
+                <!-- Cloud -->
+                <div class="tech-item">
+                    <img src="https://cdn.simpleicons.org/amazonaws/FF9900" alt="AWS">
+                    <span>AWS</span>
+                </div>
+                <div class="tech-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud">
+                    <span>Google Cloud</span>
+                </div>
+                <div class="tech-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg" alt="Azure">
+                    <span>Azure</span>
+                </div>
+                <div class="tech-item">
+                    <img src="https://cdn.simpleicons.org/cloudflare/F38020" alt="Cloudflare">
+                    <span>Cloudflare</span>
+                </div>
+                <!-- Monitoring & Observability -->
+                <div class="tech-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/grafana/grafana-original.svg" alt="Grafana">
+                    <span>Grafana</span>
+                </div>
+                <div class="tech-item">
+                    <img src="https://cdn.simpleicons.org/elasticsearch/005571" alt="Elasticsearch">
+                    <span>Elastic</span>
+                </div>
+                <div class="tech-item">
+                    <img src="https://cdn.simpleicons.org/sonarqube/4E9BCD" alt="SonarQube">
+                    <span>SonarQube</span>
+                </div>
+                <!-- Seguridad -->
+                <div class="tech-item">
+                    <img src="https://cdn.simpleicons.org/burpsuite/FF6633" alt="Burp Suite">
+                    <span>Burp Suite</span>
+                </div>
+                <div class="tech-item">
+                    <img src="img/nmap.png" alt="Nmap">
+                    <span>Nmap</span>
+                </div>
+                <div class="tech-item">
+                    <img src="img/metasp.png" alt="Metasploit">
+                    <span>Metasploit</span>
+                </div>
+                <!-- Dev -->
+                <div class="tech-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python">
+                    <span>Python</span>
+                </div>
+                <div class="tech-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js">
+                    <span>Node.js</span>
+                </div>
+                <div class="tech-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angularjs/angularjs-original.svg" alt="Angular">
+                    <span>Angular</span>
+                </div>
+                <div class="tech-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="Linux">
+                    <span>Linux</span>
+                </div>
+                <!-- DB -->
+                <div class="tech-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL">
+                    <span>MySQL</span>
+                </div>
+                <div class="tech-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
+                    <span>PostgreSQL</span>
+                </div>
+                <!-- QA & PM -->
+                <div class="tech-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/selenium/selenium-original.svg" alt="Selenium">
+                    <span>Selenium</span>
+                </div>
+                <div class="tech-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jira/jira-original.svg" alt="Jira">
+                    <span>Jira</span>
+                </div>
+                <div class="tech-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-original.svg" alt="WordPress">
+                    <span>WordPress</span>
+                </div>
+                <div class="tech-item">
+                    <img src="img/manageengine.png" alt="ManageEngine">
+                    <span>ManageEngine</span>
+                </div>
             </div>
         </div>
     </div>
