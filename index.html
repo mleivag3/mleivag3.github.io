@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marco Leiva | Cybersecurity & DevOps Engineer</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23050510'/><text y='68' x='50' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='44' fill='url(%23g)'>ML</text><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='0'><stop offset='0%25' stop-color='%2300d4ff'/><stop offset='100%25' stop-color='%237b2fff'/></linearGradient></defs></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
@@ -14,12 +15,50 @@
             --cyan: #00d4ff;
             --purple: #7b2fff;
             --pink: #ff2d78;
-            --text: #e0e0ff;
-            --text-dim: #7070a0;
+            --text: #eeeeff;
+            --text-dim: #a0a0c8;
+            --text-muted: #7070a0;
             --glass: rgba(255,255,255,0.03);
-            --glass-border: rgba(255,255,255,0.07);
+            --glass-border: rgba(255,255,255,0.09);
             --card: rgba(8,8,24,0.85);
         }
+
+        /* SCROLL PROGRESS BAR */
+        #scroll-progress {
+            position:fixed; top:0; left:0; height:3px; width:0%;
+            background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
+            z-index:200; transition:width 0.1s linear;
+            box-shadow:0 0 10px rgba(0,212,255,0.6);
+        }
+
+        /* SPLASH SCREEN */
+        #splash {
+            position:fixed; inset:0; z-index:999;
+            background:var(--bg);
+            display:flex; flex-direction:column; align-items:center; justify-content:center;
+            gap:1.5rem; transition:opacity 0.6s ease, visibility 0.6s ease;
+        }
+        #splash.hidden { opacity:0; visibility:hidden; }
+        .splash-logo {
+            font-family:'Orbitron',sans-serif; font-size:4rem; font-weight:900;
+            background:linear-gradient(135deg,var(--cyan),var(--purple));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            animation:pulse-logo 1.2s ease-in-out infinite;
+        }
+        .splash-bar {
+            width:180px; height:2px; background:rgba(255,255,255,0.08); border-radius:2px; overflow:hidden;
+        }
+        .splash-bar-fill {
+            height:100%; width:0%; border-radius:2px;
+            background:linear-gradient(90deg,var(--cyan),var(--purple));
+            animation:fill-bar 1.6s ease forwards;
+        }
+        .splash-text {
+            font-size:0.72rem; letter-spacing:0.3em; color:var(--text-muted);
+            text-transform:uppercase; font-family:'Orbitron',sans-serif;
+        }
+        @keyframes pulse-logo { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.7;transform:scale(0.97)} }
+        @keyframes fill-bar { 0%{width:0%} 100%{width:100%} }
         * { margin:0; padding:0; box-sizing:border-box; }
         html { scroll-behavior:smooth; }
         body { background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; overflow-x:hidden; }
@@ -142,7 +181,7 @@
         .edu-card h4 { font-size:0.95rem; font-weight:600; margin-bottom:0.2rem; }
         .edu-card p { font-size:0.8rem; color:var(--text-dim); }
         .edu-year { font-family:'Orbitron',sans-serif; font-size:0.65rem; color:var(--cyan); margin-top:0.3rem; }
-        .about-text { color:var(--text-dim); line-height:1.9; font-size:0.95rem; margin-bottom:1.4rem; }
+        .about-text { color:var(--text-dim); line-height:1.9; font-size:0.95rem; margin-bottom:1.4rem; font-weight:400; }
         .about-highlights { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:2rem; }
         .hi { display:flex; align-items:center; gap:0.6rem; font-size:0.88rem; }
         .hi i { color:var(--cyan); font-size:0.75rem; }
@@ -198,9 +237,9 @@
         .tl-title { font-size:1rem; font-weight:700; }
         .tl-date { font-family:'Orbitron',sans-serif; font-size:0.65rem; color:var(--cyan); padding:0.2rem 0.7rem; border:1px solid rgba(0,212,255,0.3); border-radius:20px; white-space:nowrap; }
         .tl-company { font-size:0.82rem; color:var(--purple); font-weight:500; margin-bottom:0.8rem; }
-        .tl-desc { color:var(--text-dim); font-size:0.88rem; line-height:1.8; margin-bottom:1rem; }
+        .tl-desc { color:#b0b0d0; font-size:0.88rem; line-height:1.8; margin-bottom:1rem; }
         .tl-tags { display:flex; flex-wrap:wrap; gap:0.35rem; }
-        .tl-tag { padding:0.18rem 0.55rem; font-size:0.68rem; border-radius:4px; background:rgba(0,212,255,0.07); color:var(--cyan); border:1px solid rgba(0,212,255,0.15); }
+        .tl-tag { padding:0.18rem 0.55rem; font-size:0.68rem; border-radius:4px; background:rgba(0,212,255,0.09); color:var(--cyan); border:1px solid rgba(0,212,255,0.25); }
 
         /* PROJECTS */
         #projects { padding:8rem 0; background:var(--bg2); }
@@ -235,10 +274,10 @@
         .proj-card:nth-child(5) .proj-icon { background:rgba(0,184,148,0.12); color:#00b894; }
         .proj-title { font-size:1rem; font-weight:700; margin-bottom:0.3rem; }
         .proj-company { font-size:0.78rem; color:var(--text-dim); margin-bottom:1rem; }
-        .proj-desc { color:var(--text-dim); font-size:0.88rem; line-height:1.75; }
+        .proj-desc { color:#b0b0d0; font-size:0.88rem; line-height:1.75; }
         .proj-body { padding:0 1.8rem 1.5rem; flex:1; display:flex; flex-direction:column; gap:1rem; }
         .proj-tags { display:flex; flex-wrap:wrap; gap:0.4rem; }
-        .proj-tag { padding:0.2rem 0.6rem; font-size:0.7rem; border-radius:4px; background:rgba(255,255,255,0.04); color:var(--text-dim); border:1px solid var(--glass-border); }
+        .proj-tag { padding:0.2rem 0.6rem; font-size:0.7rem; border-radius:4px; background:rgba(255,255,255,0.05); color:#a0a0c8; border:1px solid rgba(255,255,255,0.1); }
         .proj-footer { padding:1rem 1.8rem 1.5rem; border-top:1px solid var(--glass-border); display:flex; align-items:center; justify-content:space-between; }
         .proj-badge { font-family:'Orbitron',sans-serif; font-size:0.6rem; letter-spacing:0.1em; padding:0.25rem 0.7rem; border-radius:20px; }
         .proj-badge.current { background:rgba(0,212,255,0.1); color:var(--cyan); border:1px solid rgba(0,212,255,0.3); }
@@ -310,6 +349,16 @@
     </style>
 </head>
 <body>
+<!-- SPLASH -->
+<div id="splash">
+    <div class="splash-logo">ML</div>
+    <div class="splash-bar"><div class="splash-bar-fill"></div></div>
+    <div class="splash-text">Cargando portafolio...</div>
+</div>
+
+<!-- SCROLL PROGRESS -->
+<div id="scroll-progress"></div>
+
 <canvas id="bg-canvas"></canvas>
 
 <nav id="navbar">
@@ -1072,9 +1121,22 @@ const obs = new IntersectionObserver(entries=>{
 },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 
-// NAV SCROLL
-window.addEventListener('scroll',()=>{
-    document.getElementById('navbar').style.padding = window.scrollY>50?'0.5rem 2.5rem':'1rem 2.5rem';
+// SPLASH
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        document.getElementById('splash').classList.add('hidden');
+    }, 1700);
+});
+
+// SCROLL PROGRESS BAR
+const progressBar = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = (window.scrollY / total) * 100;
+    progressBar.style.width = pct + '%';
+
+    // NAV SCROLL
+    document.getElementById('navbar').style.padding = window.scrollY > 50 ? '0.5rem 2.5rem' : '1rem 2.5rem';
 });
 
 // MOBILE NAV
