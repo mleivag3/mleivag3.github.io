@@ -1,804 +1,742 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>EngineFolio - Portfolio</title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="Free Website Template" name="keywords">
-        <meta content="Free Website Template" name="description">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marco Leiva | Cybersecurity & DevOps Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #050510;
+            --bg2: #080818;
+            --bg3: #0c0c20;
+            --cyan: #00d4ff;
+            --purple: #7b2fff;
+            --pink: #ff2d78;
+            --text: #e0e0ff;
+            --text-dim: #7070a0;
+            --glass: rgba(255,255,255,0.03);
+            --glass-border: rgba(255,255,255,0.07);
+            --card: rgba(8,8,24,0.85);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; overflow-x:hidden; }
 
-        <!-- Favicon -->
-        <link href="img/favicon.ico" rel="icon">
+        #bg-canvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; }
 
-        <!-- Google Font -->
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        /* NAV */
+        nav {
+            position:fixed; top:0; width:100%; z-index:100;
+            padding:1rem 2.5rem;
+            display:flex; align-items:center; justify-content:space-between;
+            background:rgba(5,5,16,0.9); backdrop-filter:blur(20px);
+            border-bottom:1px solid var(--glass-border);
+            transition:padding 0.3s;
+        }
+        .nav-logo {
+            font-family:'Orbitron',sans-serif; font-size:1.2rem; font-weight:900;
+            background:linear-gradient(135deg,var(--cyan),var(--purple));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            text-decoration:none;
+        }
+        .nav-links { display:flex; gap:2rem; list-style:none; }
+        .nav-links a {
+            color:var(--text-dim); text-decoration:none; font-size:0.8rem;
+            font-weight:500; letter-spacing:0.08em; text-transform:uppercase;
+            transition:color 0.3s; position:relative;
+        }
+        .nav-links a::after {
+            content:''; position:absolute; bottom:-4px; left:0;
+            width:0; height:1px; background:var(--cyan); transition:width 0.3s;
+        }
+        .nav-links a:hover { color:var(--cyan); }
+        .nav-links a:hover::after { width:100%; }
+        .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+        .hamburger span { width:24px; height:2px; background:var(--cyan); transition:all 0.3s; }
 
-        <!-- CSS Libraries -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link href="lib/animate/animate.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-       
-        <!-- Template Stylesheet -->
-        <link href="css/style.css" rel="stylesheet">
-    </head>
+        /* SECTIONS */
+        section { position:relative; z-index:1; }
+        .container { max-width:1200px; margin:0 auto; padding:0 2rem; }
+        .section-tag {
+            font-family:'Orbitron',sans-serif; font-size:0.65rem;
+            letter-spacing:0.35em; color:var(--cyan); text-transform:uppercase; margin-bottom:0.6rem;
+        }
+        .section-title {
+            font-family:'Orbitron',sans-serif; font-size:clamp(1.8rem,4vw,2.6rem);
+            font-weight:700; line-height:1.2; margin-bottom:0.8rem;
+        }
+        .section-title span { background:linear-gradient(135deg,var(--cyan),var(--purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .section-divider { width:50px; height:3px; background:linear-gradient(90deg,var(--cyan),var(--purple)); border-radius:2px; margin-bottom:3rem; }
 
-    <body data-spy="scroll" data-target=".navbar" data-offset="51">
-        <!-- Nav Bar Start -->
-        <div class="navbar navbar-expand-lg bg-light navbar-light">
-            <div class="container-fluid">
-                <a href="index.html" class="navbar-brand">portfolio</a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        /* HERO */
+        #home { min-height:100vh; display:flex; align-items:center; padding:6rem 0 3rem; }
+        .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+        .hero-eyebrow {
+            font-family:'Orbitron',sans-serif; font-size:0.7rem;
+            letter-spacing:0.4em; color:var(--cyan); text-transform:uppercase; margin-bottom:1rem;
+        }
+        .hero-name { font-family:'Orbitron',sans-serif; font-size:clamp(2.4rem,5.5vw,3.8rem); font-weight:900; line-height:1.1; margin-bottom:1rem; }
+        .hero-name .grad { background:linear-gradient(135deg,var(--cyan),var(--purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .hero-typed { font-size:1.05rem; color:var(--text-dim); margin-bottom:1.5rem; min-height:1.8rem; }
+        .typed-cursor { color:var(--cyan); animation:blink 1s infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+        .hero-desc { color:var(--text-dim); line-height:1.9; font-size:0.95rem; margin-bottom:2rem; max-width:480px; }
+        .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
 
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav ml-auto">
-                        <a href="#home" class="nav-item nav-link active">Home</a>
-                        <a href="#about" class="nav-item nav-link">About</a>
-                        <a href="#service" class="nav-item nav-link">Service</a>
-                        <a href="#experience" class="nav-item nav-link">Experience</a>
-                        <a href="#portfolio" class="nav-item nav-link">Portfolio</a>
-                        <a href="#price" class="nav-item nav-link">Price</a>
-                        <a href="#review" class="nav-item nav-link">Review</a>
-                        <a href="#team" class="nav-item nav-link">Team</a>
-                        <a href="#blog" class="nav-item nav-link">Blog</a>
-                        <a href="#contact" class="nav-item nav-link">Contact</a>
-                        <div id="google_translate_element"></div>
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Nav Bar End -->
+        .btn-p {
+            padding:0.8rem 2rem; background:linear-gradient(135deg,var(--cyan),var(--purple));
+            color:#fff; border:none; border-radius:6px; font-weight:600; font-size:0.9rem;
+            cursor:pointer; text-decoration:none; display:inline-block; transition:all 0.3s;
+            position:relative; overflow:hidden;
+        }
+        .btn-p::before {
+            content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+            background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);
+            transition:left 0.5s;
+        }
+        .btn-p:hover::before { left:100%; }
+        .btn-p:hover { transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,212,255,0.3); }
 
+        .btn-o {
+            padding:0.8rem 2rem; background:transparent; color:var(--cyan);
+            border:1px solid var(--cyan); border-radius:6px; font-weight:600; font-size:0.9rem;
+            cursor:pointer; text-decoration:none; display:inline-block; transition:all 0.3s;
+        }
+        .btn-o:hover { background:rgba(0,212,255,0.08); transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,212,255,0.15); }
 
-        <!-- Hero Start -->
-        <div class="hero" id="home">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-sm-12 col-md-6">
-                        <div class="hero-content">
-                            <div class="hero-text">
-                                <p>I'm</p>
-                                <h1>Marco Leiva</h1>
-                                <h2></h2>
-                                <div class="typed-text">Docker, Cibersecurity, DevOps, Web Developer, Linux Administrator</div>
-                            </div>
-                            <div class="hero-btn">
-                                <a class="btn" href="">Hire Me</a>
-                                <a class="btn" href="">Contact Me</a>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-6 d-none d-md-block">
-                        <div class="hero-image">
-                            <img src="img/foto.jpeg" alt="Hero Image">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Hero End -->
+        .hero-stats { display:flex; gap:2.5rem; margin-top:2.5rem; }
+        .stat-num { font-family:'Orbitron',sans-serif; font-size:1.7rem; font-weight:900; background:linear-gradient(135deg,var(--cyan),var(--purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .stat-label { font-size:0.7rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.05em; }
 
-<!-- About Start -->
-<div class="about wow fadeInUp" data-wow-delay="0.1s" id="about">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-lg-6 mb-4 mb-lg-0">
-                <div class="about-content">
-                    <div class="section-header text-left">
-                        <p>Learn About Me</p>
-                        <h2>6 Years Experience</h2>
-                    </div>
-                    <div class="about-text">
-                        <p>
-                            My education includes a master's degree in cybersecurity with a specialized focus on areas such as DevOps,
-                            Docker, and microservices. I have led numerous projects, utilizing agile methodologies like Scrum to ensure
-                            efficiency and quality in delivery. My experience spans from managing technological risks to implementing
-                            cybersecurity solutions in both pre-sales and post-sales phases. Committed to excellence and customer satisfaction,
-                            I am here to provide innovative and secure technological solutions that drive your company's success in the digital world.
-                        </p>
-                    </div>
-                    <div class="skills">
-                        <div class="skill-name">
-                            <p>Communication Skills:</p><p>85%</p>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="skill-name">
-                            <p>Continuous Learning Ability:</p><p>95%</p>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="skill-name">
-                            <p>Leadership Skills</p><p>90%</p>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="skill-name">
-                            <p>Teamwork</p><p>85%</p>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <a class="btn" href="">Learn More</a>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="about-content">
-                    <div class="section-header text-left">
-                        <p>Skills</p>
-                        <h2>Technologies Manage</h2>
-                    </div>
-                    <div class="contenedor2">
-                        <img src="img/dkr.png" alt="Docker" class="imagen2" loading="lazy">
-                        <img src="img/jenkins.svg" alt="Jenkins" class="imagen2" loading="lazy">
-                        <img src="img/gitt.png" alt="Git" class="imagen2" loading="lazy">
-                        <img src="img/cloudflare.png" alt="999" class="imagen2" loading="lazy">
-                        <img src="img/psql.png" alt="Postgres" class="imagen2" loading="lazy">
-                        <img src="img/gcp.png" alt="GCP" class="imagen2" loading="lazy">
-                        <img src="img/linux.png" alt="Linux" class="imagen2" loading="lazy">
-                        <img src="img/magento.png" alt="Linux" class="imagen2" loading="lazy">
-                        <img src="img/node.png" alt="999" class="imagen2" loading="lazy">
-                        <img src="img/grafana.png" alt="Postgres" class="imagen2" loading="lazy">
-                        <img src="img/swarm.png" alt="GCP" class="imagen2" loading="lazy">
-                        <img src="img/elastic.png" alt="Linux" class="imagen2" loading="lazy">
-                        <img src="img/nmap.png" alt="Linux" class="imagen2" loading="lazy">
-                        <img src="img/mysql.png" alt="Linux" class="imagen2" loading="lazy">
-                        <img src="img/azure.png" alt="Linux" class="imagen2" loading="lazy">
-                        <img src="img/python.png" alt="Linux" class="imagen2" loading="lazy">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
+        /* PHOTO */
+        .hero-photo { display:flex; justify-content:center; align-items:center; }
+        .photo-frame { position:relative; width:320px; height:380px; }
+        .photo-border { position:absolute; inset:0; border-radius:20px; background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink)); padding:2px; }
+        .photo-inner {
+            width:100%; height:100%; border-radius:18px; background:var(--bg2);
+            display:flex; flex-direction:column; align-items:center; justify-content:center;
+            gap:1rem; overflow:hidden;
+        }
+        .photo-inner i { font-size:3.5rem; color:var(--text-dim); }
+        .photo-inner p { color:var(--text-dim); font-size:0.8rem; }
+        .photo-glow { position:absolute; width:250px; height:250px; border-radius:50%; background:radial-gradient(circle,rgba(0,212,255,0.12),transparent); top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; }
+        .pc { position:absolute; width:28px; height:28px; }
+        .pc.tl { top:-4px; left:-4px; border-top:2px solid var(--cyan); border-left:2px solid var(--cyan); }
+        .pc.tr { top:-4px; right:-4px; border-top:2px solid var(--purple); border-right:2px solid var(--purple); }
+        .pc.bl { bottom:-4px; left:-4px; border-bottom:2px solid var(--purple); border-left:2px solid var(--purple); }
+        .pc.br { bottom:-4px; right:-4px; border-bottom:2px solid var(--cyan); border-right:2px solid var(--cyan); }
+
+        /* ABOUT */
+        #about { padding:8rem 0; background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%); }
+        .about-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:5rem; align-items:center; }
+        .edu-card {
+            padding:1.2rem 1.5rem; border:1px solid var(--glass-border); border-radius:10px;
+            background:var(--glass); backdrop-filter:blur(10px); transition:all 0.3s;
+            border-left:3px solid var(--cyan); margin-bottom:1rem;
+        }
+        .edu-card:nth-child(2) { border-left-color:var(--purple); }
+        .edu-card:nth-child(3) { border-left-color:var(--pink); }
+        .edu-card:hover { transform:translateX(6px); background:rgba(0,212,255,0.04); border-color:rgba(0,212,255,0.3); }
+        .edu-card h4 { font-size:0.95rem; font-weight:600; margin-bottom:0.2rem; }
+        .edu-card p { font-size:0.8rem; color:var(--text-dim); }
+        .edu-year { font-family:'Orbitron',sans-serif; font-size:0.65rem; color:var(--cyan); margin-top:0.3rem; }
+        .about-text { color:var(--text-dim); line-height:1.9; font-size:0.95rem; margin-bottom:1.4rem; }
+        .about-highlights { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:2rem; }
+        .hi { display:flex; align-items:center; gap:0.6rem; font-size:0.88rem; }
+        .hi i { color:var(--cyan); font-size:0.75rem; }
+
+        /* SKILLS */
+        #skills { padding:8rem 0; background:var(--bg2); }
+        .skills-categories { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:1.5rem; margin-bottom:3.5rem; }
+        .skill-cat {
+            padding:1.8rem; border:1px solid var(--glass-border); border-radius:16px;
+            background:var(--card); backdrop-filter:blur(10px); transition:all 0.3s;
+            position:relative; overflow:hidden;
+        }
+        .skill-cat::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--cyan),var(--purple)); }
+        .skill-cat:hover { border-color:rgba(0,212,255,0.25); transform:translateY(-5px); box-shadow:0 20px 40px rgba(0,0,0,0.4); }
+        .cat-icon { width:46px; height:46px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; margin-bottom:1rem; }
+        .cat-icon.c { background:rgba(0,212,255,0.1); color:var(--cyan); }
+        .cat-icon.p { background:rgba(123,47,255,0.1); color:var(--purple); }
+        .cat-icon.k { background:rgba(255,45,120,0.1); color:var(--pink); }
+        .skill-cat h3 { font-size:0.95rem; font-weight:700; margin-bottom:1rem; }
+        .tags { display:flex; flex-wrap:wrap; gap:0.45rem; }
+        .tag {
+            padding:0.25rem 0.7rem; border-radius:20px; font-size:0.72rem; font-weight:500;
+            border:1px solid; transition:all 0.2s; cursor:default;
+        }
+        .tag.c { border-color:rgba(0,212,255,0.3); color:var(--cyan); background:rgba(0,212,255,0.05); }
+        .tag.p { border-color:rgba(123,47,255,0.3); color:var(--purple); background:rgba(123,47,255,0.05); }
+        .tag.k { border-color:rgba(255,45,120,0.3); color:var(--pink); background:rgba(255,45,120,0.05); }
+        .tag:hover { transform:scale(1.05); }
+
+        .tech-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(95px,1fr)); gap:0.9rem; }
+        .tech-item {
+            display:flex; flex-direction:column; align-items:center; gap:0.5rem;
+            padding:1rem 0.5rem; border:1px solid var(--glass-border); border-radius:12px;
+            background:var(--glass); transition:all 0.3s; cursor:default;
+        }
+        .tech-item:hover { border-color:rgba(0,212,255,0.35); background:rgba(0,212,255,0.05); transform:translateY(-3px); }
+        .tech-item img { width:34px; height:34px; object-fit:contain; filter:grayscale(0.2); }
+        .tech-item span { font-size:0.68rem; color:var(--text-dim); text-align:center; }
+
+        /* EXPERIENCE */
+        #experience { padding:8rem 0; background:var(--bg); }
+        .timeline { position:relative; padding-left:2rem; }
+        .timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:linear-gradient(180deg,var(--cyan),var(--purple),transparent); }
+        .tl-item { position:relative; margin-bottom:2.5rem; padding-left:2rem; }
+        .tl-dot { position:absolute; left:-2.35rem; top:0.35rem; width:13px; height:13px; border-radius:50%; background:var(--cyan); border:2px solid var(--bg); box-shadow:0 0 10px var(--cyan); }
+        .tl-item:nth-child(even) .tl-dot { background:var(--purple); box-shadow:0 0 10px var(--purple); }
+        .tl-card {
+            padding:1.8rem; border:1px solid var(--glass-border); border-radius:14px;
+            background:var(--card); backdrop-filter:blur(10px); transition:all 0.3s;
+        }
+        .tl-card:hover { border-color:rgba(0,212,255,0.2); transform:translateX(5px); box-shadow:0 10px 30px rgba(0,0,0,0.3); }
+        .tl-head { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.3rem; flex-wrap:wrap; gap:0.4rem; }
+        .tl-title { font-size:1rem; font-weight:700; }
+        .tl-date { font-family:'Orbitron',sans-serif; font-size:0.65rem; color:var(--cyan); padding:0.2rem 0.7rem; border:1px solid rgba(0,212,255,0.3); border-radius:20px; white-space:nowrap; }
+        .tl-company { font-size:0.82rem; color:var(--purple); font-weight:500; margin-bottom:0.8rem; }
+        .tl-desc { color:var(--text-dim); font-size:0.88rem; line-height:1.8; margin-bottom:1rem; }
+        .tl-tags { display:flex; flex-wrap:wrap; gap:0.35rem; }
+        .tl-tag { padding:0.18rem 0.55rem; font-size:0.68rem; border-radius:4px; background:rgba(0,212,255,0.07); color:var(--cyan); border:1px solid rgba(0,212,255,0.15); }
+
+        /* CERTS */
+        #certifications { padding:8rem 0; background:var(--bg2); }
+        .cert-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:0.9rem; }
+        .cert-card {
+            display:flex; align-items:center; gap:0.9rem; padding:0.9rem 1.1rem;
+            border:1px solid var(--glass-border); border-radius:10px; background:var(--glass);
+            backdrop-filter:blur(10px); transition:all 0.3s;
+        }
+        .cert-card:hover { border-color:rgba(0,212,255,0.35); background:rgba(0,212,255,0.04); transform:translateY(-2px); }
+        .cert-icon { width:34px; height:34px; border-radius:8px; background:linear-gradient(135deg,var(--cyan),var(--purple)); display:flex; align-items:center; justify-content:center; font-size:0.85rem; color:#fff; flex-shrink:0; }
+        .cert-name { font-size:0.82rem; font-weight:500; line-height:1.3; }
+
+        /* CONTACT */
+        #contact { padding:8rem 0; background:var(--bg); }
+        .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; }
+        .contact-info h3 { font-size:1.05rem; font-weight:600; margin-bottom:0.8rem; }
+        .contact-info p { color:var(--text-dim); font-size:0.9rem; line-height:1.8; margin-bottom:2rem; }
+        .c-links { display:flex; flex-direction:column; gap:0.9rem; }
+        .c-link { display:flex; align-items:center; gap:0.9rem; text-decoration:none; transition:all 0.3s; }
+        .c-link:hover { transform:translateX(5px); }
+        .c-icon { width:42px; height:42px; border-radius:9px; border:1px solid var(--glass-border); background:var(--glass); display:flex; align-items:center; justify-content:center; color:var(--cyan); font-size:0.95rem; transition:all 0.3s; }
+        .c-link:hover .c-icon { background:rgba(0,212,255,0.1); border-color:var(--cyan); }
+        .c-text span { display:block; font-size:0.7rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.05em; }
+        .c-text strong { font-size:0.88rem; color:var(--text); }
+        .contact-form { display:flex; flex-direction:column; gap:1.1rem; }
+        .fg { display:flex; flex-direction:column; gap:0.35rem; }
+        .fg label { font-size:0.75rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.05em; }
+        .fg input, .fg textarea {
+            padding:0.75rem 1rem; background:var(--glass); border:1px solid var(--glass-border);
+            border-radius:7px; color:var(--text); font-family:'Inter',sans-serif; font-size:0.88rem;
+            transition:all 0.3s; resize:vertical;
+        }
+        .fg input:focus, .fg textarea:focus { outline:none; border-color:var(--cyan); background:rgba(0,212,255,0.02); box-shadow:0 0 0 3px rgba(0,212,255,0.08); }
+        .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+
+        footer { padding:2rem; text-align:center; border-top:1px solid var(--glass-border); }
+        footer p { font-size:0.8rem; color:var(--text-dim); }
+        footer span { color:var(--cyan); }
+
+        /* ANIMATIONS */
+        .fade-up { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease,transform 0.7s ease; }
+        .fade-up.visible { opacity:1; transform:translateY(0); }
+
+        ::-webkit-scrollbar { width:4px; }
+        ::-webkit-scrollbar-track { background:var(--bg); }
+        ::-webkit-scrollbar-thumb { background:var(--purple); border-radius:3px; }
+
+        @media(max-width:900px) {
+            .hero-grid { grid-template-columns:1fr; }
+            .hero-photo { display:none; }
+            .about-grid { grid-template-columns:1fr; gap:3rem; }
+            .contact-grid { grid-template-columns:1fr; }
+        }
+        @media(max-width:768px) {
+            .hamburger { display:flex; }
+            .nav-links { display:none; position:fixed; top:58px; left:0; right:0; background:rgba(5,5,16,0.98); flex-direction:column; padding:2rem; gap:1.5rem; border-bottom:1px solid var(--glass-border); }
+            .nav-links.open { display:flex; }
+            .form-row { grid-template-columns:1fr; }
+            .about-highlights { grid-template-columns:1fr; }
+        }
+    </style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+
+<nav id="navbar">
+    <a href="#home" class="nav-logo">ML.</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Inicio</a></li>
+        <li><a href="#about">Sobre mí</a></li>
+        <li><a href="#skills">Habilidades</a></li>
+        <li><a href="#experience">Experiencia</a></li>
+        <li><a href="#certifications">Certificados</a></li>
+        <li><a href="#contact">Contacto</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleNav()">
+        <span></span><span></span><span></span>
     </div>
-</div>
-<!-- About sEnd -->
+</nav>
 
-        
-        
-         <!-- Experience Start -->
-        <div class="experience" id="experience">
-            <div class="container">
-                <header class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                    <p>My Resume</p>
-                    <h2>Working Experience</h2>
-                </header>
-                <div class="timeline">
-                    <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
-                        <div class="timeline-text">
-                            <div class="timeline-date">2023 - 2024</div>
-                            <h2>Chief Digital Implementation</h2>
-                            <h4>Agropecuaria Popoyan S.A.</h4>
-                            <p>
-                                As Digital Implementation Manager at Agropecuaria Popoyan,
-                                 I lead a multidisciplinary team of 6 engineers in systems,
-                                  DevOps, Cybersecurity, QA, and DBA. I oversee technology 
-                                  implementation projects within DevOps and agile methodologies
-                                   such as SCRUM, as well as DevSecOps implementation to ensure the 
-                                   security of our technological products. I also coordinate cybersecurity 
-                                   in the Google Cloud Platform infrastructure, manage information security,
-                                    and lead Quality Assurance and database improvement projects. During my tenure, 
-                                    we have implemented enhancements that have contributed to an 80% increase in the 
-                                    technology improvement ratio.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s">
-                        <div class="timeline-text">
-                            <div class="timeline-date">2021 - 2022</div>
-                            <h2>Digital Implementation Coordinator</h2>
-                            <h4>Agropecuaria Popoyan S.A.</h4>
-                            <p>
-                             I leveraged cutting-edge agro-industrial technology to drive
-                                 DevOps initiatives. Working within robust security and development 
-                                 frameworks, I spearheaded various projects, including microservices
-                                  deployment using Docker containers, Jenkins implementation for CI/CD pipelines, 
-                                  and automated deployment pipelines for an e-commerce platform. I also orchestrated CI/CD 
-                                  implementation for electronic wallet technologies, configured Google Cloud Platform's firewall,
-                                   and set up WAF with Cloudflare. Additionally, I conducted vulnerability scans, managed mobile app
-                                    deployments through Codemagic, integrated Scrum methodology, and administered cybersecurity tools to 
-                                    ensure robust system integrity.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
-                        <div class="timeline-text">
-                            <div class="timeline-date">2019 - 2021</div>
-                            <h2>Systems Engineer</h2>
-                            <h4>BITSO S.A.</h4>
-                            <p>
-                                Systems Engineer specializing in IT and Cybersecurity with experience in sales support, 
-                                solution implementation, and post-sales support. Responsible for advising on IT, Cybersecurity,
-                                 and Cloud Computing solutions, as well as implementing and providing support for platforms such as
-                                  McAfee, Manage Engine, Digicert, among others. Expert in help desk issue management and ensuring 
-                                  customer satisfaction throughout the project lifecycle.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s">
-                        <div class="timeline-text">
-                            <div class="timeline-date">2019 - 2021</div>
-                            <h2>Tech Support</h2>
-                            <h4>PACAS CENTER S.A.</h4>
-                            <p>
-                                Experienced IT Specialist proficient in website and database management,
-                                 equipment maintenance, and enterprise software installation. Ensures smooth 
-                                 operation of computer systems, collaborating effectively across departments. 
-                                 Strong communicator and team player.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
-                        <div class="timeline-text">
-                            <div class="timeline-date">2015 - 2024</div>
-                            <h2>Web Developer</h2>
-                            <h4>Marco Leiva</h4>
-                            <p>
-                                Freelance web developer with expertise in designing and developing websites, 
-                                specializing in crafting landing pages, WordPress e-commerce solutions, and SEO 
-                                optimization. Additionally, adept at implementing cybersecurity measures, configuring DNS,
-                                 domains, and WAF (Web Application Firewall). Offering comprehensive services ranging 
-                                 from website creation and maintenance to security and search engine optimization. 
-                                 My approach focuses on delivering tailored and secure solutions to meet each client's specific needs.
-                            </p>
-                        </div>
-                 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Job Experience End -->
-        
-        
-        <!-- Banner Start -->
-        <div class="banner wow zoomIn" data-wow-delay="0.1s">
-            <div class="container">
-                <div class="section-header text-center">
-                    <p></p>
-                    <h2>About <span>Me</span> </h2>
-                </div>
-                <div class="container banner-text">
-                    <p>
-                        Throughout my 6 years of experience in Guatemala's 
-                        technology sector, I have developed and enhanced digital 
-                        products and services with business models ranging from SaaS products,
-                         digital media, E-commerce, and cybersecurity, where I have found my great passion. 
-                         My philosophy has always been to listen to the user of the applications and empathize
-                          with them, as well as to identify patterns in their behavior, while maintaining secure,
-                           agile, and easy-to-use technologies for the end user.
-                    </p>
-                    <a class="btn">contact</a>
-                </div>
-            </div>
-        </div>
-        <!-- Banner End -->
-
-<!-- Nueva Sección del Portafolio -->
-<div class="new-portfolio-section" id="new-portfolio-section">
+<!-- HERO -->
+<section id="home">
     <div class="container">
-        <div class="section-header text-center">
-            <p>My Portfolio</p>
-            <h2>Explore My Works</h2>
-        </div>
-        <div class="portfolio-filters text-center">
-            <button class="filter-btn active" data-category="all">All</button>
-            <button class="filter-btn" data-category="development">Development</button>
-            <button class="filter-btn" data-category="cybersecurity">Cybersecurity</button>
-            <button class="filter-btn" data-category="cybersecurity">docker</button>
-        </div>
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide new-portfolio-item" data-category="development">
-                    <img src="img/portfolio-1.jpg" alt="Portfolio Item 1">
-                    <div class="new-portfolio-overlay">
-                        <h3>Web Page</h3>
-                        <a href="https://Nexabit.com.gt" class="new-portfolio-btn">View Details</a>
-                    </div>
+        <div class="hero-grid">
+            <div class="fade-up">
+                <div class="hero-eyebrow">// Guatemala, Centroamérica</div>
+                <h1 class="hero-name">Marco<br><span class="grad">Leiva</span></h1>
+                <div class="hero-typed">
+                    <span id="typed-text"></span><span class="typed-cursor">|</span>
                 </div>
-                <div class="swiper-slide new-portfolio-item" data-category="cybersecurity">
-                    <img src="img/portfolio-2.jpg" alt="Portfolio Item 2">
-                    <div class="new-portfolio-overlay">
-                        <h3>Encryption Data</h3>
-                        <a href="https://github.com/mleivag3/Python" class="new-portfolio-btn">View Details</a>
-                    </div>
+                <p class="hero-desc">Ingeniero en Sistemas con Maestría en Ciberseguridad. 7+ años liderando equipos de DevOps, Ciberseguridad y Desarrollo en Centroamérica.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn-p">Contáctame</a>
+                    <a href="#experience" class="btn-o">Ver Experiencia</a>
                 </div>
-                <div class="swiper-slide new-portfolio-item" data-category="development">
-                    <img src="img/portfolio-3.jpg" alt="Portfolio Item 3">
-                    <div class="new-portfolio-overlay">
-                        <h3>System pay</h3>
-                        <a href="https://github.com/mleivag3/sistemaPagos" class="new-portfolio-btn">View Details</a>
-                    </div>
-                </div>
-                <div class="swiper-slide new-portfolio-item" data-category="docker">
-                    <img src="img/portfolio-4.jpg" alt="Portfolio Item 4">
-                    <div class="new-portfolio-overlay">
-                        <h3>Docker Export volume</h3>
-                        <a href="https://github.com/mleivag3/Docker/tree/main/Exportar-docker-volumen" class="new-portfolio-btn">View Details</a>
-                    </div>
-                </div>
-                <div class="swiper-slide new-portfolio-item" data-category="Development">
-                    <img src="img/portfolio-5.jpg" alt="Portfolio Item 5">
-                    <div class="new-portfolio-overlay">
-                        <h3>Web Site </h3>
-                        <a href="https://jhtecniauto.com.gt/" class="new-portfolio-btn">View Details</a>
-                    </div>
-                </div>
-                <div class="swiper-slide new-portfolio-item" data-category="docker">
-                    <img src="img/portfolio-6.jpg" alt="Portfolio Item 6">
-                    <div class="new-portfolio-overlay">
-                        <h3>Mail Server PosteIO</h3>
-                        <a href="#" class="new-portfolio-btn">View Details</a>
-                    </div>
-                </div>
-                <div class="swiper-slide new-portfolio-item" data-category="development">
-                    <img src="img/portfolio-7.jpg" alt="Portfolio Item 7">
-                    <div class="new-portfolio-overlay">
-                        <h3>Project Title 7</h3>
-                        <a href="#" class="new-portfolio-btn">View Details</a>
-                    </div>
-                </div>
-                <div class="swiper-slide new-portfolio-item" data-category="cybersecurity">
-                    <img src="img/portfolio-8.jpg" alt="Portfolio Item 8">
-                    <div class="new-portfolio-overlay">
-                        <h3>Project Title 8</h3>
-                        <a href="#" class="new-portfolio-btn">View Details</a>
-                    </div>
-                </div>
-                <div class="swiper-slide new-portfolio-item" data-category="development">
-                    <img src="img/portfolio-9.jpg" alt="Portfolio Item 9">
-                    <div class="new-portfolio-overlay">
-                        <h3>Project Title 9</h3>
-                        <a href="#" class="new-portfolio-btn">View Details</a>
-                    </div>
-                </div>
-                <div class="swiper-slide new-portfolio-item" data-category="cybersecurity">
-                    <img src="img/portfolio-10.jpg" alt="Portfolio Item 10">
-                    <div class="new-portfolio-overlay">
-                        <h3>Project Title 10</h3>
-                        <a href="#" class="new-portfolio-btn">View Details</a>
-                    </div>
+                <div class="hero-stats">
+                    <div class="stat"><div class="stat-num">7+</div><div class="stat-label">Años exp.</div></div>
+                    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Empresas</div></div>
+                    <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Certificados</div></div>
+                    <div class="stat"><div class="stat-num">80%</div><div class="stat-label">Mejora TI</div></div>
                 </div>
             </div>
-
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <!-- Agrega los botones de navegación del carrusel -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
+            <div class="hero-photo fade-up" style="transition-delay:0.2s">
+                <div class="photo-frame">
+                    <div class="photo-border">
+                        <div class="photo-inner" id="photo-container">
+                            <i class="fas fa-user"></i>
+                            <p>Foto próximamente</p>
+                        </div>
+                    </div>
+                    <div class="photo-glow"></div>
+                    <div class="pc tl"></div><div class="pc tr"></div>
+                    <div class="pc bl"></div><div class="pc br"></div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
-<!-- Swiper JS -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script src="main.js"></script>
-        
-        
-        
-        <!-- Banner Start -->
-      <!-- Banner Start -->
-<div class="banner wow zoomIn" data-wow-delay="0.1s">
+<!-- ABOUT -->
+<section id="about">
     <div class="container">
-        <div class="section-header text-center">
-            <h2>My <span>Certifications</span></h2>
-        </div>
-        <div class="container banner-text">
-            <ul class="certification-list">
-                <li>Certified Ethical Hacker (CEH)</li>
-                <li>Certified Information Systems Security Professional (CISSP)</li>
-                <li>Google Analytics Certification</li>
-                <li>Microsoft Certified: Azure Fundamentals</li>
-                <li>Adobe Certified Expert (ACE)</li>
-            </ul>
+        <div class="about-grid">
+            <div class="fade-up">
+                <div class="section-tag">// Formación</div>
+                <h2 class="section-title">Edu<span>cación</span></h2>
+                <div class="section-divider"></div>
+                <div class="edu-card"><h4>Maestría en Seguridad Informática</h4><p>Universidad Mariano Gálvez</p><div class="edu-year">2021 — 2022</div></div>
+                <div class="edu-card"><h4>Ingeniería en Sistemas</h4><p>Universidad Mariano Gálvez</p><div class="edu-year">2013 — 2020</div></div>
+                <div class="edu-card"><h4>Maestro de Educación Primaria</h4><p>Colegio Mixto Cultura</p><div class="edu-year">2010 — 2012</div></div>
+            </div>
+            <div class="fade-up" style="transition-delay:0.15s">
+                <div class="section-tag">// Sobre mí</div>
+                <h2 class="section-title">7 Años de <span>Experiencia</span></h2>
+                <div class="section-divider"></div>
+                <p class="about-text">A lo largo de 7 años en el sector tecnológico de Guatemala, he desarrollado y mejorado productos digitales en modelos de negocio que van desde SaaS, medios digitales, POS y ecommerce hasta <strong style="color:var(--cyan)">Ciberseguridad</strong>, donde encontré mi gran pasión.</p>
+                <p class="about-text">Mi filosofía: escuchar al usuario, empatizar con él, encontrar patrones en su comportamiento y mantener tecnologías seguras, ágiles y fáciles de usar para el usuario final.</p>
+                <div class="about-highlights">
+                    <div class="hi"><i class="fas fa-check-circle"></i> Liderazgo de equipos</div>
+                    <div class="hi"><i class="fas fa-check-circle"></i> Lean Startup</div>
+                    <div class="hi"><i class="fas fa-check-circle"></i> Agile / SCRUM</div>
+                    <div class="hi"><i class="fas fa-check-circle"></i> Planeamiento estratégico</div>
+                    <div class="hi"><i class="fas fa-check-circle"></i> DevSecOps</div>
+                    <div class="hi"><i class="fas fa-check-circle"></i> Networking</div>
+                </div>
+                <div style="display:flex;gap:1rem;flex-wrap:wrap">
+                    <a href="mailto:Marco123leiva@gmail.com" class="btn-p"><i class="fas fa-envelope" style="margin-right:0.5rem"></i>Email</a>
+                    <a href="https://github.com/mleivag3" target="_blank" class="btn-o"><i class="fab fa-github" style="margin-right:0.5rem"></i>GitHub</a>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-<!-- Banner End -->
+</section>
 
-        <!-- Banner End -->
-        
-        
-        <!-- Price Start -->
-        <div class="price" id="price">
-            <div class="container">
-                <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                    <p>Pricing Plan</p>
-                    <h2>Affordable Price</h2>
+<!-- SKILLS -->
+<section id="skills">
+    <div class="container">
+        <div style="text-align:center;margin-bottom:3.5rem" class="fade-up">
+            <div class="section-tag">// Stack tecnológico</div>
+            <h2 class="section-title">Habilidades & <span>Tecnologías</span></h2>
+            <div class="section-divider" style="margin:1rem auto 0"></div>
+        </div>
+        <div class="skills-categories">
+            <div class="skill-cat fade-up">
+                <div class="cat-icon c"><i class="fas fa-shield-alt"></i></div>
+                <h3>Ciberseguridad</h3>
+                <div class="tags">
+                    <span class="tag c">Ethical Hacking</span><span class="tag c">Pentest</span>
+                    <span class="tag c">Burp Suite</span><span class="tag c">Nmap</span>
+                    <span class="tag c">Metasploit</span><span class="tag c">Fluid Attacks</span>
+                    <span class="tag c">WAF / Cloudflare</span><span class="tag c">ESET</span>
+                    <span class="tag c">McAfee</span><span class="tag c">DevSecOps</span>
                 </div>
-                <div class="row">
-                    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="price-item">
-                            <div class="price-header">
-                                <div class="price-title">
-                                    <h2>Basic</h2>
-                                </div>
-                                <div class="price-prices">
-                                    <h2><small>$</small>49<span>/ mo</span></h2>
-                                </div>
-                            </div>
-                            <div class="price-body">
-                                <div class="price-description">
-                                    <ul>
-                                        <li>Bootstrap 4</li>
-                                        <li>Font Awesome 5</li>
-                                        <li>Responsive Design</li>
-                                        <li>Browser Compatibility</li>
-                                        <li>Easy To Use</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="price-footer">
-                                <div class="price-action">
-                                    <a class="btn" href="">Order Now</a>
-                                </div>
-                            </div>
-                        </div>
+            </div>
+            <div class="skill-cat fade-up" style="transition-delay:0.1s">
+                <div class="cat-icon p"><i class="fas fa-infinity"></i></div>
+                <h3>DevOps & CI/CD</h3>
+                <div class="tags">
+                    <span class="tag p">Docker</span><span class="tag p">Docker Swarm</span>
+                    <span class="tag p">Jenkins</span><span class="tag p">GitHub Actions</span>
+                    <span class="tag p">Azure DevOps</span><span class="tag p">SCRUM</span>
+                    <span class="tag p">SonarQube</span><span class="tag p">Codemagic</span>
+                    <span class="tag p">Grafana</span><span class="tag p">Selenium</span>
+                </div>
+            </div>
+            <div class="skill-cat fade-up" style="transition-delay:0.2s">
+                <div class="cat-icon k"><i class="fas fa-cloud"></i></div>
+                <h3>Cloud & Infraestructura</h3>
+                <div class="tags">
+                    <span class="tag k">AWS EC2</span><span class="tag k">Lambda</span>
+                    <span class="tag k">S3</span><span class="tag k">Elastic Beanstalk</span>
+                    <span class="tag k">RDS</span><span class="tag k">CodePipeline</span>
+                    <span class="tag k">Route 53</span><span class="tag k">Google Cloud</span>
+                    <span class="tag k">Azure IoT</span><span class="tag k">CloudFormation</span>
+                </div>
+            </div>
+            <div class="skill-cat fade-up" style="transition-delay:0.3s">
+                <div class="cat-icon c"><i class="fas fa-code"></i></div>
+                <h3>Desarrollo & QA</h3>
+                <div class="tags">
+                    <span class="tag c">HTML/CSS/JS</span><span class="tag c">Angular</span>
+                    <span class="tag c">Node.js</span><span class="tag c">Python</span>
+                    <span class="tag c">WordPress</span><span class="tag c">WooCommerce</span>
+                    <span class="tag c">MySQL</span><span class="tag c">PostgreSQL</span>
+                    <span class="tag c">JMeter</span><span class="tag c">BrowserStack</span>
+                </div>
+            </div>
+        </div>
+        <div class="fade-up">
+            <div class="tech-grid">
+                <div class="tech-item"><img src="img/dkr.png" alt="Docker"><span>Docker</span></div>
+                <div class="tech-item"><img src="img/jenkins.svg" alt="Jenkins"><span>Jenkins</span></div>
+                <div class="tech-item"><img src="img/azure.png" alt="Azure"><span>Azure</span></div>
+                <div class="tech-item"><img src="img/gcp.png" alt="GCP"><span>Google Cloud</span></div>
+                <div class="tech-item"><img src="img/git.png" alt="Git"><span>Git</span></div>
+                <div class="tech-item"><img src="img/linux.png" alt="Linux"><span>Linux</span></div>
+                <div class="tech-item"><img src="img/python.png" alt="Python"><span>Python</span></div>
+                <div class="tech-item"><img src="img/node.png" alt="Node.js"><span>Node.js</span></div>
+                <div class="tech-item"><img src="img/mysql.png" alt="MySQL"><span>MySQL</span></div>
+                <div class="tech-item"><img src="img/psql.png" alt="PostgreSQL"><span>PostgreSQL</span></div>
+                <div class="tech-item"><img src="img/cloudflare.png" alt="Cloudflare"><span>Cloudflare</span></div>
+                <div class="tech-item"><img src="img/grafana.png" alt="Grafana"><span>Grafana</span></div>
+                <div class="tech-item"><img src="img/elastic.png" alt="Elastic"><span>Elastic</span></div>
+                <div class="tech-item"><img src="img/nmap.png" alt="Nmap"><span>Nmap</span></div>
+                <div class="tech-item"><img src="img/metasp.png" alt="Metasploit"><span>Metasploit</span></div>
+                <div class="tech-item"><img src="img/manageengine.png" alt="ManageEngine"><span>ManageEngine</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+    <div class="container">
+        <div style="margin-bottom:3.5rem" class="fade-up">
+            <div class="section-tag">// Trayectoria profesional</div>
+            <h2 class="section-title">Experiencia <span>Laboral</span></h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="timeline">
+            <div class="tl-item fade-up">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-head"><div class="tl-title">Jefe de Proyecto</div><div class="tl-date">Actual</div></div>
+                    <div class="tl-company"><i class="fas fa-building" style="margin-right:0.4rem"></i>EasyGo — Edificio TISA, Zona 9</div>
+                    <p class="tl-desc">Liderazgo de equipos Fullstack en desarrollo de soluciones a medida para clientes de alto nivel en Centroamérica. Gestión del ciclo de vida completo con SCRUM, verificación de pipelines CI/CD en YAML, supervisión de QA y análisis de reportes DevSecOps.</p>
+                    <div class="tl-tags">
+                        <span class="tl-tag">SCRUM</span><span class="tl-tag">Azure DevOps</span>
+                        <span class="tl-tag">CI/CD YAML</span><span class="tl-tag">DevSecOps</span>
+                        <span class="tl-tag">Git</span><span class="tl-tag">QA</span>
                     </div>
-                    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.0s">
-                        <div class="price-item featured-item">
-                            <div class="price-header">
-                                <div class="price-title">
-                                    <h2>Standard</h2>
-                                </div>
-                                <div class="price-prices">
-                                    <h2><small>$</small>99<span>/ mo</span></h2>
-                                </div>
-                            </div>
-                            <div class="price-body">
-                                <div class="price-description">
-                                    <ul>
-                                        <li>Bootstrap 4</li>
-                                        <li>Font Awesome 5</li>
-                                        <li>Responsive Design</li>
-                                        <li>Browser Compatibility</li>
-                                        <li>Easy To Use</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="price-footer">
-                                <div class="price-action">
-                                    <a class="btn" href="">Order Now</a>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="tl-item fade-up" style="transition-delay:0.08s">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-head"><div class="tl-title">Líder DevOps & Ciberseguridad</div><div class="tl-date">Dic 2024 — Abr 2025</div></div>
+                    <div class="tl-company"><i class="fas fa-building" style="margin-right:0.4rem"></i>Paggo App — Edificio Tec 3, Zona 4</div>
+                    <p class="tl-desc">Liderazgo en industria bancaria/POS. Configuración de infraestructura crítica en AWS, escaneo y remediación de vulnerabilidades, análisis de código con Fluid Attacks y SonarQube, QA con BrowserStack, JMeter, Appium y Selenium.</p>
+                    <div class="tl-tags">
+                        <span class="tl-tag">AWS</span><span class="tl-tag">Elastic Beanstalk</span>
+                        <span class="tl-tag">RDS</span><span class="tl-tag">CodePipeline</span>
+                        <span class="tl-tag">Fluid Attacks</span><span class="tl-tag">SonarQube</span>
+                        <span class="tl-tag">Selenium</span>
                     </div>
-                    <div class="col-md-4 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="price-item">
-                            <div class="price-header">
-                                <div class="price-title">
-                                    <h2>Premium</h2>
-                                </div>
-                                <div class="price-prices">
-                                    <h2><small>$</small>149<span>/ mo</span></h2>
-                                </div>
-                            </div>
-                            <div class="price-body">
-                                <div class="price-description">
-                                    <ul>
-                                        <li>Bootstrap 4</li>
-                                        <li>Font Awesome 5</li>
-                                        <li>Responsive Design</li>
-                                        <li>Browser Compatibility</li>
-                                        <li>Easy To Use</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="price-footer">
-                                <div class="price-action">
-                                    <a class="btn" href="">Order Now</a>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="tl-item fade-up" style="transition-delay:0.16s">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-head"><div class="tl-title">Jefe de Implementación Digital</div><div class="tl-date">Mar 2023 — Abr 2024</div></div>
+                    <div class="tl-company"><i class="fas fa-building" style="margin-right:0.4rem"></i>Agropecuaria Popoyan — Edificio Tec, Zona 4</div>
+                    <p class="tl-desc">Liderazgo de equipo multidisciplinar (DevOps, Ciberseguridad, QA, DBA) en agroindustria. Implementación de microservicios, DevSecOps y coordinación de Ciberseguridad en Google Cloud Platform. Logro: 80% de mejora en ratio tecnológico.</p>
+                    <div class="tl-tags">
+                        <span class="tl-tag">Microservicios</span><span class="tl-tag">GCP</span>
+                        <span class="tl-tag">DevSecOps</span><span class="tl-tag">QA</span>
+                        <span class="tl-tag">SCRUM</span><span class="tl-tag">DBA</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tl-item fade-up" style="transition-delay:0.24s">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-head"><div class="tl-title">Coordinador de Implementación Digital</div><div class="tl-date">Jun 2021 — Feb 2022</div></div>
+                    <div class="tl-company"><i class="fas fa-building" style="margin-right:0.4rem"></i>Agropecuaria Popoyan — Edificio Tec, Zona 4</div>
+                    <p class="tl-desc">DevOps en frameworks de seguridad y desarrollo. Docker para microservicios, Jenkins para CI/CD, pipelines para ecommerce y billetera electrónica, configuración de Firewall en GCP y WAF con Cloudflare.</p>
+                    <div class="tl-tags">
+                        <span class="tl-tag">Docker</span><span class="tl-tag">Jenkins</span>
+                        <span class="tl-tag">CI/CD</span><span class="tl-tag">Cloudflare WAF</span>
+                        <span class="tl-tag">GCP</span><span class="tl-tag">Codemagic</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tl-item fade-up" style="transition-delay:0.32s">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-head"><div class="tl-title">Ingeniero de Soporte</div><div class="tl-date">Oct 2019 — Jun 2020</div></div>
+                    <div class="tl-company"><i class="fas fa-building" style="margin-right:0.4rem"></i>BITSO S.A. — Zona 13</div>
+                    <p class="tl-desc">Coordinación para implementación de tecnologías de Ciberseguridad, cloud e infraestructura. Implementación de McAfee, Manage Engine, DigiCert, Yubico, ESET, Azure y Cloudflare. Preventa de herramientas TI.</p>
+                    <div class="tl-tags">
+                        <span class="tl-tag">McAfee</span><span class="tl-tag">ManageEngine</span>
+                        <span class="tl-tag">Azure</span><span class="tl-tag">Cloudflare</span>
+                        <span class="tl-tag">ESET</span><span class="tl-tag">Yubico</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tl-item fade-up" style="transition-delay:0.4s">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-head"><div class="tl-title">Freelance — Web & Ciberseguridad</div><div class="tl-date">Independiente</div></div>
+                    <div class="tl-company"><i class="fas fa-laptop-code" style="margin-right:0.4rem"></i>Consultoría independiente</div>
+                    <p class="tl-desc">Diseño y desarrollo web responsivo, ecommerce con WordPress/WooCommerce, SEO, configuración de DNS, dominios y WAF, gestión de bases de datos y consultoría de ciberseguridad.</p>
+                    <div class="tl-tags">
+                        <span class="tl-tag">HTML/CSS/JS</span><span class="tl-tag">WordPress</span>
+                        <span class="tl-tag">WooCommerce</span><span class="tl-tag">SEO</span>
+                        <span class="tl-tag">WAF</span><span class="tl-tag">DNS</span>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Price End -->
-        
-        
-        <!-- Testimonial Start -->
-        <div class="testimonial wow fadeInUp" data-wow-delay="0.1s" id="review">
-            <div class="container">
-                <div class="testimonial-icon">
-                    <i class="fa fa-quote-left"></i>
-                </div>
-                <div class="owl-carousel testimonials-carousel">
-                    <div class="testimonial-item">
-                        <div class="testimonial-img">
-                            <img src="img/testimonial-1.jpg" alt="Image">
-                        </div>
-                        <div class="testimonial-text">
-                            <p>
-                                Lorem ipsum dolor sit amet consec adipis elit. Etiam accums lacus eget velit tincid, quis suscip justo dictum. Lorem ipsum dolor sit amet consec adipis elit.
-                            </p>
-                            <h3>Customer Name</h3>
-                            <h4>Profession</h4>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="testimonial-img">
-                            <img src="img/testimonial-2.jpg" alt="Image">
-                        </div>
-                        <div class="testimonial-text">
-                            <p>
-                                Lorem ipsum dolor sit amet consec adipis elit. Etiam accums lacus eget velit tincid, quis suscip justo dictum. Lorem ipsum dolor sit amet consec adipis elit.
-                            </p>
-                            <h3>Customer Name</h3>
-                            <h4>Profession</h4>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="testimonial-img">
-                            <img src="img/testimonial-3.jpg" alt="Image">
-                        </div>
-                        <div class="testimonial-text">
-                            <p>
-                                Lorem ipsum dolor sit amet consec adipis elit. Etiam accums lacus eget velit tincid, quis suscip justo dictum. Lorem ipsum dolor sit amet consec adipis elit.
-                            </p>
-                            <h3>Customer Name</h3>
-                            <h4>Profession</h4>
-                        </div>
-                    </div>
+    </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+    <div class="container">
+        <div style="text-align:center;margin-bottom:3.5rem" class="fade-up">
+            <div class="section-tag">// Formación continua</div>
+            <h2 class="section-title">Certificados & <span>Cursos</span></h2>
+            <div class="section-divider" style="margin:1rem auto 0"></div>
+        </div>
+        <div class="cert-grid fade-up">
+            <div class="cert-card"><div class="cert-icon"><i class="fas fa-shield-alt"></i></div><div class="cert-name">Cibersecurity — CISCO</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fas fa-rocket"></i></div><div class="cert-name">NASA Space Apps</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fab fa-aws"></i></div><div class="cert-name">AWS Cloud Practitioner</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fab fa-linux"></i></div><div class="cert-name">NDG Linux Unhatched — CISCO</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fab fa-docker"></i></div><div class="cert-name">Docker — Platzi</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fab fa-docker"></i></div><div class="cert-name">Docker Swarm — Platzi</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fab fa-google"></i></div><div class="cert-name">Desarrollo Web — Google</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fas fa-code"></i></div><div class="cert-name">Fundamentos Angular — Platzi</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fas fa-bug"></i></div><div class="cert-name">Pentest — Try Hack Me</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fab fa-google"></i></div><div class="cert-name">Google Analytics — Platzi</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fas fa-chart-line"></i></div><div class="cert-name">Negocios Digitales — Platzi</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fas fa-search"></i></div><div class="cert-name">Vulnerability Scans — Hack The Box</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fas fa-infinity"></i></div><div class="cert-name">DevOps — Platzi</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fas fa-tools"></i></div><div class="cert-name">Jenkins — Platzi</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fas fa-user-secret"></i></div><div class="cert-name">Hacking Ético — Platzi</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fab fa-github"></i></div><div class="cert-name">GitHub — Platzi</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fab fa-microsoft"></i></div><div class="cert-name">Capacitación Azure IoT</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fas fa-bug"></i></div><div class="cert-name">Burp Suite — PortSwigger</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fas fa-graduation-cap"></i></div><div class="cert-name">Essentials Ethical Hacker — EC-Council</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fas fa-network-wired"></i></div><div class="cert-name">Latam Partner Training ITOM/ITSM</div></div>
+            <div class="cert-card"><div class="cert-icon"><i class="fas fa-shopping-cart"></i></div><div class="cert-name">Capacitación Ecommerce</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+        <div style="margin-bottom:3.5rem" class="fade-up">
+            <div class="section-tag">// Hablemos</div>
+            <h2 class="section-title">Ponte en <span>Contacto</span></h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="contact-grid">
+            <div class="fade-up">
+                <h3>¿Tienes un proyecto en mente?</h3>
+                <p>Disponible para proyectos de Ciberseguridad, DevOps, consultoría tecnológica y desarrollo web. No dudes en escribirme.</p>
+                <div class="c-links">
+                    <a href="mailto:Marco123leiva@gmail.com" class="c-link">
+                        <div class="c-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="c-text"><span>Email</span><strong>Marco123leiva@gmail.com</strong></div>
+                    </a>
+                    <a href="tel:+50242587736" class="c-link">
+                        <div class="c-icon"><i class="fas fa-phone"></i></div>
+                        <div class="c-text"><span>Teléfono</span><strong>+502 4258-7736</strong></div>
+                    </a>
+                    <a href="https://github.com/mleivag3" target="_blank" class="c-link">
+                        <div class="c-icon"><i class="fab fa-github"></i></div>
+                        <div class="c-text"><span>GitHub</span><strong>github.com/mleivag3</strong></div>
+                    </a>
+                    <a class="c-link">
+                        <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="c-text"><span>Ubicación</span><strong>Amatitlán, Guatemala</strong></div>
+                    </a>
                 </div>
             </div>
-        </div>
-        <!-- Testimonial End -->
-
-
-        <!-- Team Start -->
-        <div class="team" id="team">
-            <div class="container">
-                <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                    <p>My Team</p>
-                    <h2>Expert Team Members</h2>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.0s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="img/team-1.jpg" alt="Image">
-                            </div>
-                            <div class="team-text">
-                                <h2>Mollie Ross</h2>
-                                <h4>Web Designer</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consec adipis elit. Etiam accum lacus
-                                </p>
-                                <div class="team-social">
-                                    <a class="btn" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn" href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a class="btn" href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
+            <div class="fade-up" style="transition-delay:0.15s">
+                <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <div class="form-row">
+                        <div class="fg"><label>Nombre</label><input type="text" placeholder="Tu nombre" required></div>
+                        <div class="fg"><label>Email</label><input type="email" placeholder="tu@email.com" required></div>
                     </div>
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="img/team-2.jpg" alt="Image">
-                            </div>
-                            <div class="team-text">
-                                <h2>Dylan Adams</h2>
-                                <h4>Web Developer</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consec adipis elit. Etiam accum lacus
-                                </p>
-                                <div class="team-social">
-                                    <a class="btn" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn" href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a class="btn" href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="img/team-3.jpg" alt="Image">
-                            </div>
-                            <div class="team-text">
-                                <h2>Jennifer Page</h2>
-                                <h4>Apps Designer</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consec adipis elit. Etiam accum lacus
-                                </p>
-                                <div class="team-social">
-                                    <a class="btn" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn" href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a class="btn" href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="img/team-4.jpg" alt="Image">
-                            </div>
-                            <div class="team-text">
-                                <h2>Josh Dunn</h2>
-                                <h4>Apps Developer</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consec adipis elit. Etiam accum lacus
-                                </p>
-                                <div class="team-social">
-                                    <a class="btn" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn" href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a class="btn" href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <div class="fg"><label>Asunto</label><input type="text" placeholder="¿En qué puedo ayudarte?" required></div>
+                    <div class="fg"><label>Mensaje</label><textarea rows="5" placeholder="Cuéntame sobre tu proyecto..." required></textarea></div>
+                    <button type="submit" class="btn-p" style="width:fit-content">
+                        <i class="fas fa-paper-plane" style="margin-right:0.5rem"></i>Enviar Mensaje
+                    </button>
+                </form>
             </div>
         </div>
-        <!-- Team End -->
-        
-        
-        <!-- Contact Start -->
-        <div class="contact wow fadeInUp" data-wow-delay="0.1s" id="contact">
-            <div class="container-fluid">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-8">
-                            <div class="contact-form">
-                                <div id="success"></div>
-                                <form name="sentMessage" id="contactForm" novalidate="novalidate">
-                                    <div class="control-group">
-                                        <input type="text" class="form-control" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
-                                        <p class="help-block"></p>
-                                    </div>
-                                    <div class="control-group">
-                                        <input type="email" class="form-control" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
-                                        <p class="help-block"></p>
-                                    </div>
-                                    <div class="control-group">
-                                        <input type="text" class="form-control" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
-                                        <p class="help-block"></p>
-                                    </div>
-                                    <div class="control-group">
-                                        <textarea class="form-control" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
-                                        <p class="help-block"></p>
-                                    </div>
-                                    <div>
-                                        <button class="btn" type="submit" id="sendMessageButton">Send Message</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Contact End -->
+    </div>
+</section>
 
+<footer>
+    <p>© 2025 <span>Marco Leiva</span> — Diseñado con pasión desde Guatemala</p>
+</footer>
 
-        <!-- Blog Start -->
-        <div class="blog" id="blog">
-            <div class="container">
-                <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                    <p>From Blog</p>
-                    <h2>Latest Articles</h2>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="blog-item wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="blog-img">
-                                <img src="img/blog-1.jpg" alt="Blog">
-                            </div>
-                            <div class="blog-text">
-                                <h2>Lorem ipsum dolor sit amet</h2>
-                                <div class="blog-meta">
-                                    <p><i class="far fa-user"></i>Admin</p>
-                                    <p><i class="far fa-list-alt"></i>Web Design</p>
-                                    <p><i class="far fa-calendar-alt"></i>01-Jan-2045</p>
-                                    <p><i class="far fa-comments"></i>5</p>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet elit. Nullam commodo mattis mi. Nullam eu erat lectus. Proin viverra risus vitae luctus. Proin ut ante, vitae sapien. Fusce sem ac erat rhoncus, ornare mattis nisl massa et eros vitae pulvin
-                                </p>
-                                <a class="btn" href="">Read More <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="blog-item wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="blog-img">
-                                <img src="img/blog-2.jpg" alt="Blog">
-                            </div>
-                            <div class="blog-text">
-                                <h2>Lorem ipsum dolor sit amet</h2>
-                                <div class="blog-meta">
-                                    <p><i class="far fa-user"></i>Admin</p>
-                                    <p><i class="far fa-list-alt"></i>Apps Design</p>
-                                    <p><i class="far fa-calendar-alt"></i>01-Jan-2045</p>
-                                    <p><i class="far fa-comments"></i>10</p>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet elit. Nullam commodo mattis mi. Nullam eu erat lectus. Proin viverra risus vitae luctus. Proin ut ante, vitae sapien. Fusce sem ac erat rhoncus, ornare mattis nisl massa et eros vitae pulvin
-                                </p>
-                                <a class="btn" href="">Read More <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Blog End -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// THREE.JS PARTICLE NETWORK
+(function(){
+    const canvas = document.getElementById('bg-canvas');
+    const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
 
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    camera.position.z = 30;
 
-        <!-- Footer Start -->
-        <div class="footer wow fadeIn" data-wow-delay="0.3s">
-            <div class="container-fluid">
-                <div class="container">
-                    <div class="footer-info">
-                        <h2>Kate Winslet</h2>
-                        <h3>123 Street, New York, USA</h3>
-                        <div class="footer-menu">
-                            <p>+012 345 67890</p>
-                            <p>info@example.com</p>
-                        </div>
-                        <div class="footer-social">
-                            <a href=""><i class="fab fa-twitter"></i></a>
-                            <a href=""><i class="fab fa-facebook-f"></i></a>
-                            <a href=""><i class="fab fa-youtube"></i></a>
-                            <a href=""><i class="fab fa-instagram"></i></a>
-                            <a href=""><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="container copyright">
-                    <p>&copy; <a href="#">Your Site Name</a>, All Right Reserved | Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>
-                </div>
-            </div>
-        </div>
-        <!-- Footer End -->
-        
-        
-        <!-- Back to top button -->
-        <a href="#" class="btn back-to-top"><i class="fa fa-chevron-up"></i></a>
-        
-        
-        <!-- Pre Loader -->
-        <div id="loader" class="show">
-            <div class="loader"></div>
-        </div>
+    const mouse = {x:0, y:0};
+    document.addEventListener('mousemove', e => {
+        mouse.x = (e.clientX/window.innerWidth - 0.5) * 2;
+        mouse.y = -(e.clientY/window.innerHeight - 0.5) * 2;
+    });
 
-        
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/wow/wow.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-        <script src="lib/typed/typed.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-        <script src="lib/isotope/isotope.pkgd.min.js"></script>
-        <script src="lib/lightbox/js/lightbox.min.js"></script>
-        
-        <!-- Contact Javascript File -->
-        <script src="mail/jqBootstrapValidation.min.js"></script>
-        <script src="mail/contact.js"></script>
+    const count = 200;
+    const positions = new Float32Array(count * 3);
+    const velocities = [];
+    for(let i = 0; i < count; i++){
+        positions[i*3]   = (Math.random()-0.5)*90;
+        positions[i*3+1] = (Math.random()-0.5)*70;
+        positions[i*3+2] = (Math.random()-0.5)*40;
+        velocities.push({
+            x:(Math.random()-0.5)*0.018,
+            y:(Math.random()-0.5)*0.018,
+            z:(Math.random()-0.5)*0.008
+        });
+    }
 
-        <!-- Template Javascript -->
-        <script src="js/main.js"></script>
-    </body>
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const mat = new THREE.PointsMaterial({color:0x00d4ff, size:0.22, transparent:true, opacity:0.65, sizeAttenuation:true});
+    scene.add(new THREE.Points(geo, mat));
+
+    const lineMat = new THREE.LineBasicMaterial({color:0x7b2fff, transparent:true, opacity:0.12});
+    let linesMesh = null;
+
+    function updateLines(){
+        if(linesMesh) scene.remove(linesMesh);
+        const lp = [];
+        const maxD = 13;
+        for(let i=0;i<count;i++){
+            for(let j=i+1;j<count;j++){
+                const dx=positions[i*3]-positions[j*3];
+                const dy=positions[i*3+1]-positions[j*3+1];
+                const dz=positions[i*3+2]-positions[j*3+2];
+                if(Math.sqrt(dx*dx+dy*dy+dz*dz)<maxD){
+                    lp.push(positions[i*3],positions[i*3+1],positions[i*3+2]);
+                    lp.push(positions[j*3],positions[j*3+1],positions[j*3+2]);
+                }
+            }
+        }
+        const lg = new THREE.BufferGeometry();
+        lg.setAttribute('position', new THREE.BufferAttribute(new Float32Array(lp),3));
+        linesMesh = new THREE.LineSegments(lg, lineMat);
+        scene.add(linesMesh);
+    }
+
+    let frame = 0;
+    function animate(){
+        requestAnimationFrame(animate);
+        frame++;
+        for(let i=0;i<count;i++){
+            positions[i*3]   += velocities[i].x;
+            positions[i*3+1] += velocities[i].y;
+            positions[i*3+2] += velocities[i].z;
+            if(positions[i*3]>45)  positions[i*3]=-45;
+            if(positions[i*3]<-45) positions[i*3]=45;
+            if(positions[i*3+1]>35) positions[i*3+1]=-35;
+            if(positions[i*3+1]<-35) positions[i*3+1]=35;
+        }
+        geo.attributes.position.needsUpdate = true;
+        if(frame%3===0) updateLines();
+        camera.position.x += (mouse.x*3 - camera.position.x)*0.02;
+        camera.position.y += (mouse.y*2 - camera.position.y)*0.02;
+        camera.lookAt(scene.position);
+        renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize',()=>{
+        camera.aspect = window.innerWidth/window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth,window.innerHeight);
+    });
+})();
+
+// TYPED TEXT
+const phrases = ['Cybersecurity Engineer','DevOps Leader','Jefe de Proyecto','Ethical Hacker','Cloud Architect','Systems Engineer'];
+let pi=0, ci=0, del=false;
+const tel = document.getElementById('typed-text');
+function type(){
+    const cur = phrases[pi];
+    if(!del){ tel.textContent=cur.slice(0,++ci); if(ci===cur.length){del=true;setTimeout(type,1800);return;} }
+    else { tel.textContent=cur.slice(0,--ci); if(ci===0){del=false;pi=(pi+1)%phrases.length;} }
+    setTimeout(type, del?55:95);
+}
+type();
+
+// SCROLL ANIMATIONS
+const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+// NAV SCROLL
+window.addEventListener('scroll',()=>{
+    document.getElementById('navbar').style.padding = window.scrollY>50?'0.5rem 2.5rem':'1rem 2.5rem';
+});
+
+// MOBILE NAV
+function toggleNav(){ document.getElementById('navLinks').classList.toggle('open'); }
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+
+// FORM
+function handleSubmit(e){
+    e.preventDefault();
+    const btn=e.target.querySelector('button[type=submit]');
+    btn.innerHTML='<i class="fas fa-check" style="margin-right:0.5rem"></i>¡Enviado!';
+    btn.style.background='linear-gradient(135deg,#00b894,#00cec9)';
+    setTimeout(()=>{btn.innerHTML='<i class="fas fa-paper-plane" style="margin-right:0.5rem"></i>Enviar Mensaje';btn.style.background='';e.target.reset();},3000);
+}
+</script>
+</body>
 </html>
